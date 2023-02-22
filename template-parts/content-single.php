@@ -1,14 +1,14 @@
-<div class="bg-slate-50 " id="post-<?php the_ID(); ?>" > <?php// post_class(); ?>
-
+<div class=" " id="post-<?php the_ID(); ?>" > <?php// post_class(); ?>
+	<h1 class="text-primary">Single Content</h1>
 	<div class=" z-0 absolute left-0 right-0 bottom-0 top-[112px] lg:top-[152px]">
 		
 	</div>
 
-	<div class="relative py-6 md:py-16 md:px-12 z-10 bg-white container my-8 mx-auto mt-[20vh] min-h-screen max-w-screen-lg">
+	<div class="relative py-6 md:py-16 md:px-12 z-10 container my-8 mx-auto mt-[20vh] min-h-screen max-w-screen-lg">
 		<header class="mb-4">
 			<?php the_post_thumbnail("fullwidth"); ?>	
 			<br>
-			<time datetime="<?php echo get_the_date( 'c' ); ?>" itemprop="datePublished" class="text-sm text-gray-700"><?php echo get_the_date(); ?></time>
+			<time datetime="<?php echo get_the_date( 'c' ); ?>" itemprop="datePublished" class="text-sm text-primary"><?php echo get_the_date(); ?></time>
 			<?php the_title( sprintf( '<h1 class="entry-title  text-xl lg:text-4xl font-extrabold leading-tight mb-1 text-red"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
 		</header>
 

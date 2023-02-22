@@ -28,3 +28,4 @@ package-lock.json
 css/editor-style.css
 css/app.css
 .DS_Store
+node_modules

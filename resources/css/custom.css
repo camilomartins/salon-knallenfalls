@@ -41,8 +41,10 @@ article > *:not(.entry-content),
     }
 }
 
-header .current-menu-item {
+/* Menu Item Styling */
 
+header .current-menu-item {
+  font-weight: bold;
 
     @apply  text-primary;
   }
@@ -198,4 +200,8 @@ header .current-menu-item {
     -o-animation: rotating 4s linear infinite;
     animation: rotating 4s linear infinite;
   }
+
+footer .dashicons{
+  font-size: 40px;
+}
   

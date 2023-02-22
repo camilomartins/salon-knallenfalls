@@ -43,10 +43,10 @@ get_header(); ?>
             <!-- Alle aktuellen Nachrichten im Freibad Mirke -->
             <div class="nachrichten mt-24 mx-auto container max-w-screen-lg ">
 
-                <h2 class="text-3xl mt-8 mb-6 md:mt-60  md:mb-16 font-bold text-primary">Aktuelles aus dem Freibad</h2>
+                <h2 class="text-3xl mt-8 mb-6 md:mt-60  md:mb-16 font-bold text-primary">Der Salon</h2>
                     <?php
                         $args = [
-                        'post_type' => 'post',
+                        'post_type' => 'event',
                         'post_status' => 'publish',
                         'posts_per_page' => 4,
                         'orderby' => 'date',
@@ -68,7 +68,7 @@ get_header(); ?>
 
                             <div class="w-full py-6 md:w-3/5 md:pl-8 md:pt-6">
                               <div class="mb-4">
-                                <p class=" text-gray-700 text-sm font-light "><?php echo get_the_author(); ?> am <?php the_date(); ?></p>
+                                <p class=" text-primary text-sm font-light "><?php echo get_the_author(); ?> am <?php the_date(); ?></p>
                                 <h2 class="text-primary entry-title text-xl md:text-2xl font-extrabold leading-tight mb-1">
                                   <?php the_title(); ?>
                                 </h2>

@@ -8,29 +8,34 @@
     "color": {
       "palette": [
         {
-          "name": "Blau",
+          "name": "Weiß",
           "slug": "primary",
-          "color": "#4DBABD"
+          "color": "#FFFFFF"
         },
         {
-          "name": "Orange",
+          "name": "Schwarz",
           "slug": "secondary",
-          "color": "#FB7F43"
+          "color": "#EC736A"
         },
         {
           "name": "Dark",
           "slug": "dark",
-          "color": "#175254"
+          "color": "#FFFFFF"
         },
         {
           "name": "Dunkelblau",
           "slug": "primary-dark",
-          "color": "#175254"
+          "color": "#FFFFFF"
         },
         {
           "name": "Light",
           "slug": "light",
-          "color": "#F9FAFB"
+          "color": "#FFFFFF"
+        },
+        {
+          "name": "Background",
+          "slug": "background",
+          "color": "#000000"
         }
       ]
     },
@@ -65,8 +70,14 @@
           "slug": "xxxl",
           "name": "3XL",
           "size": "1.875rem"
+        },
+        {
+          "slug": "xxxl",
+          "name": "4XL",
+          "size": "10rem"
         }
       ]
+      
     }
   }
 }

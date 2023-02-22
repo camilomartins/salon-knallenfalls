@@ -17,7 +17,7 @@
 				<div class="w-16 h-1 bg-purple-light my-3 md:my-6"></div>
 				<p class="text-gray-800 text-2xl md:text-3xl font-light mb-8"><?php _e( 'Entschuldige, das konnten wir leider nicht finden.', 'tailpress' ); ?></p>
 				<a href="<?php echo get_bloginfo( 'url' ); ?>" class="bg-primary px-4 py-2 rounded text-white">
-					<?php _e( 'Zurück zur Startseite', 'freibadmirke' ); ?>
+					<?php _e( 'Zurück zur Startseite', 'salonknallenfalls' ); ?>
 				</a>
 			</div>
 		</div>

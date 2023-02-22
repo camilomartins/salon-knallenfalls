@@ -21,6 +21,9 @@ module.exports = {
         extend: {
             colors: tailpress.colorMapper(tailpress.theme('settings.color.palette', theme)),
             fontSize: tailpress.fontSizeMapper(tailpress.theme('settings.typography.fontSizes', theme)),
+            animation: {
+                'spin-slow': 'spin 10s linear infinite',
+            }
             
         },
         screens: {
@@ -30,7 +33,15 @@ module.exports = {
             'lg': tailpress.theme('settings.layout.contentSize', theme),
             'xl': tailpress.theme('settings.layout.wideSize', theme),
             '2xl': '1440px'
+        },
+        fontFamily: {
+            'sans': ['ui-sans-serif', 'system-ui'],
+            'serif': ['Courier Prime'],
+            'mono': ['ui-monospace', 'SFMono-Regular'],
+            'display': ['Courier Prime'],
+            'body': ['"Open Sans"'],
         }
+
     },
     plugins: [
         tailpress.tailwind

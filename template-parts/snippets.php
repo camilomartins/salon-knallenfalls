@@ -49,7 +49,7 @@
 
 		<div class="w-3/5 pl-8">
 			<div class="entry-header mb-4">
-				<time datetime="<?php echo get_the_date( 'c' ); ?>" itemprop="datePublished" class=" text-gray-700 text-sm font-light "><?php echo get_the_date(); ?></time>
+				<time datetime="<?php echo get_the_date( 'c' ); ?>" itemprop="datePublished" class=" text-primary text-sm font-light "><?php echo get_the_date(); ?></time>
 				<h2 class="text-primary entry-title text-xl md:text-2xl font-extrabold leading-tight mb-1">
 					<?php the_title(); ?>
 				</h2>

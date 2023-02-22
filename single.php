@@ -5,8 +5,8 @@
 	<!-- Single Block post template  -->
 
 	<?php if ( have_posts() ) : ?>
-
-		<?php
+		<h1>Single PHP File</h1>
+		<?php	
 		while ( have_posts() ) :
 			the_post();
 			?>

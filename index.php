@@ -2,6 +2,7 @@
 
 <!-- <main  role="main" data-track-content> -->
 <!-- class="container max-w-screen-lg mx-auto my-12 py-48" -->
+<h1 class="text-primary">Index</h1>
 
 	<?php if ( have_posts() ) : ?>
 		<?php

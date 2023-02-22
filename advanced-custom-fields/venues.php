@@ -1,7 +1,7 @@
 <?php 
 /**
  * 
- *  Mitglieder Setup
+ *  Spielstätten Setup
  * 
  *  1. ACF
  *  2. CPT
@@ -173,12 +173,12 @@ function cptui_register_my_cpts_members() {
 	 */
 
 	$labels = [
-		"name" => __( "Mitglieder", "freibadmirke" ),
-		"singular_name" => __( "Mitglied", "freibadmirke" ),
+		"name" => __( "Spielstätten", "salonknallenfalls" ),
+		"singular_name" => __( "Spielstätte", "salonknallenfalls" ),
 	];
 
 	$args = [
-		"label" => __( "Mitglieder", "freibadmirke" ),
+		"label" => __( "Spielstätte", "salonknallenfalls" ),
 		"labels" => $labels,
 		"description" => "",
 		"public" => true,
@@ -195,14 +195,14 @@ function cptui_register_my_cpts_members() {
 		"capability_type" => "post",
 		"map_meta_cap" => true,
 		"hierarchical" => false,
-		"rewrite" => [ "slug" => "members", "with_front" => true ],
+		"rewrite" => [ "slug" => "locations", "with_front" => true ],
 		"query_var" => true,
-		"menu_icon" => "dashicons-admin-users",
-		"supports" => false,
+		"menu_icon" => "dashicons-tickets-alt",
+		"supports" => ["title", "thumbnail"],
 		"show_in_graphql" => false,
 	];
 
-	register_post_type( "members", $args );
+	register_post_type( "locations", $args );
 }
 
 add_action( 'init', 'cptui_register_my_cpts_members' );
