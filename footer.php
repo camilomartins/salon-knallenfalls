@@ -8,14 +8,16 @@
 <?php do_action( 'tailpress_content_after' ); ?>
 
 
-<footer id="colophon" class=" mt-auto font-serif site-footer bg-background pt-12 pb-6 text-slate-50 " role="contentinfo">
+<footer id="colophon" class=" mb-0 mt-auto font-serif site-footer pt-12 pb-6 text-slate-50 " role="contentinfo">
 	<?php do_action( 'tailpress_footer' ); ?>
 	<div class="container max-w-screen-xl  mx-auto justify-between md:grid  md:grid-cols-2 mt-8  text-sm ">
 
 
 		<div class="text-primary md:block hover:text-white space-x-4">
-			<a  href="https://www.instagram.com/freibad_mirke/" class=" text-slate-200 font-normal"><span class="text-4xl dashicons dashicons-instagram mb-4 "></span></a>
-			<a  href="https://de-de.facebook.com/mirkerfreibad/" class="text-slate-200 font-normal text-4xl"><span class="dashicons dashicons-facebook"></span></a>
+			<a  href="https://www.instagram.com/salonknallenfalls/" class=" text-slate-200 font-normal">
+				<span class="text-4xl dashicons dashicons-instagram mb-4 bg-transparent"></span>
+			</a>
+			<a  href="https://www.facebook.com/salonknallenfalls/" class="text-slate-200 font-normal text-4xl"><span class="dashicons dashicons-facebook"></span></a>
 		</div>
 
 		<div class="">

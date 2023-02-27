@@ -42,7 +42,7 @@ echo "<script>console.log('Template".get_page_template(). "' );</script>";
 echo "<script>console.log('".get_home_url(). "' );</script>";
 ?>
 
-<div id="page" class=" max-h-screen flex flex-col ">
+<div id="page" class="min-h-screen flex flex-col ">
 
 	<?php do_action( 'tailpress_header' ); ?>
 	

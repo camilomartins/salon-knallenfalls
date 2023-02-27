@@ -27,7 +27,7 @@ $image = get_field('image') ?: 'https://freibad-mirke.de';
             $image = get_sub_field('image');
             ?>
             <div id="title-block" class="items-center flex p-10 text-primary ">
-                <div class="group-even:order-last w-48 h-48 rounded-full mr-10 bg-white overflow-hidden">
+                <div class="group-even:order-last w-48 h-48 rounded-full mr-10 overflow-hidden">
                     <?php  
                         $image = get_sub_field('image');
                         $size = 'square_s'; // (thumbnail, medium, large, full or custom size)
