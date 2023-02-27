@@ -14,10 +14,8 @@
       showCarousel("event");
 ?>      
 </div>
-<div class="bg-slate-500 text-black w-96">
-      <h1 >Newsletter</h1>
-</div>
-<div id="info-popup" tabindex="-1" class=" fixed bottom-0  left-0 z-50 w-screen bg-white h-modal ">
+
+<div id="info-popup" tabindex="-1" class="hidden fixed bottom-0  left-0 z-50 w-screen bg-white h-modal ">
   <div class=" text-black relative w-full h-full md:h-auto">
       <div class="pt-6 pl-[20%] items-center place-items-center relative shadow ">
           <div class="  mb-4 text-sm font-light ">
