@@ -11,6 +11,10 @@ module.exports = {
         './safelist.txt'
     ],
     theme: {
+        borderWidth: {
+            DEFAULT: '1px',
+            '1': '1px',
+        },
         container: {
             padding: {
                 DEFAULT: '1rem',

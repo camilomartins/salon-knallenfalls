@@ -198,7 +198,7 @@ function cptui_register_my_cpts_members() {
 		"rewrite" => [ "slug" => "locations", "with_front" => true ],
 		"query_var" => true,
 		"menu_icon" => "dashicons-tickets-alt",
-		"supports" => ["title", "thumbnail"],
+		"supports" => ["title"],
 		"show_in_graphql" => false,
 	];
 

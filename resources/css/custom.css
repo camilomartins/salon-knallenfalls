@@ -151,12 +151,12 @@ header .current-menu-item {
 
  
   ::-moz-selection { /* Code for Firefox */
-    @apply text-white bg-secondary;
+    @apply text-black bg-white;
 
   }
   
   ::selection {
-    @apply text-white bg-secondary;
+    @apply text-black bg-white;
   }
 
   .image-block{
@@ -205,3 +205,27 @@ footer .dashicons{
   font-size: 40px;
 }
   
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.btn{
+  @apply   text-xl block p-4 font-serif  border-solid border-1 border-white ;
+}
+.btn-black{
+  @apply  text-white hover:bg-white hover:text-black bg-black hover:border-black ;
+}
+.btn-white{
+  @apply hover:bg-black hover:text-white text-black bg-white hover:border-white;
+}
+
+.outline{
+  @apply border-white border-solid ;
+}
