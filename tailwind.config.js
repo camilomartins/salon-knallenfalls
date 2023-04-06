@@ -8,7 +8,9 @@ module.exports = {
         './**/*.php',
         './resources/css/*.css',
         './resources/js/*.js',
-        './safelist.txt'
+        './safelist.txt',
+        "./src/**/*.{html,js}",
+        "./node_modules/tw-elements/dist/js/**/*.js"
     ],
     theme: {
         borderWidth: {
@@ -48,6 +50,7 @@ module.exports = {
 
     },
     plugins: [
-        tailpress.tailwind
+        tailpress.tailwind,
+        require("tw-elements/dist/plugin")
     ]
 };

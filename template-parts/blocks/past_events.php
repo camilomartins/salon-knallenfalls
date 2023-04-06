@@ -25,7 +25,7 @@ $featured_posts = get_field('field_63fa3b625b1a4');
                 //Compare if Post is in the past
                 'meta_key'          => 'event-date',                
                 'meta_value'   => date( "Ymd" ), // change to how "event date" is stored
-                'meta_compare' => '>',            
+                'meta_compare' => '<',            
                 'orderby'           => 'meta_value',      	
                 'order' => 'ASC',
             ];

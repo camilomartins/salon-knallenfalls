@@ -26,7 +26,6 @@
     "watch": "cross-env NODE_ENV=development concurrently \"npm run watch:css-app\" \"npm run watch:css-editor\" \"npm run watch:js\"",
     "browser-sync": "cross-env NODE_ENV=development browser-sync start --proxy 'localhost:8888/salon-knallenfalls' --no-inject-changes --files=\"./\"",
     "watch-sync": "cross-env NODE_ENV=development concurrently \"npm run browser-sync\" \"npm run watch\""
-
   },
   "devDependencies": {
     "@jeffreyvr/tailwindcss-tailpress": "^2.0.0",
@@ -43,5 +42,8 @@
     "prettier": "2.0.5",
     "resolve-url-loader": "^3.1.2",
     "tailwindcss": "^3.2.7"
+  },
+  "dependencies": {
+    "tw-elements": "^1.0.0-beta1"
   }
 }

@@ -162,8 +162,7 @@ function setup_main_menu()
 		// Set up default menu items
 		wp_update_nav_menu_item($menu_id, 0, [
 			'menu-item-title' => __('News', 'salonknallenfalls'),
-			'menu-item-classes' => 'freibad',
-			'menu-item-url' => home_url('/'),
+			'menu-item-url' => home_url('/neuigkeiten/'),
 			'menu-item-status' => 'publish',
 		]);
 		wp_update_nav_menu_item($menu_id, 0, [
@@ -248,6 +247,9 @@ function get_custom_post_type_template($page_template)
 		$page_template = get_stylesheet_directory() . '/pages/page-presse.php';
 	} elseif ($title == 'Newsletter') {
 		$post_states[] = $prefix . 'Newsletter';
+	} elseif ($title == 'Neuigkeiten') {
+		$post_states[] = $prefix . 'Neuigkeiten';
+		$page_template = get_stylesheet_directory() . '/pages/page-news-posts.php';
 	}
 
 	if (doing_filter('page_template') && !empty($page_template)) {
@@ -269,21 +271,13 @@ add_action('after_setup_theme', 'create_pages', 2);
 function create_pages()
 {
 	$pages = [
-		0 => ['title' => __('News', 'salonknallenfalls'), 'slug' => 'startseite'],
+		0 => ['title' => __('Startseite', 'salonknallenfalls'), 'slug' => 'startseite'],
 		1 => ['title' => __('Programm', 'salonknallenfalls'), 'slug' => 'programm'],
-		2 => [
-			'title' => __('Über uns', 'salonknallenfalls'),
-			'slug' => 'ueber-uns',
-		],
+		2 => ['title' => __('Über uns', 'salonknallenfalls'), 'slug' => 'ueber-uns',],
 		3 => ['title' => __('Presse', 'salonknallenfalls'), 'slug' => 'Presse'],
-		4 => [
-			'title' => __('Impressum', 'salonknallenfalls'),
-			'slug' => 'impressum',
-		],
-		5 => [
-			'title' => __('Newsletter', 'salonknallenfalls'),
-			'slug' => 'impressum',
-		],
+		4 => ['title' => __('Impressum', 'salonknallenfalls'),'slug' => 'impressum',],
+		5 => ['title' => __('Newsletter', 'salonknallenfalls'),'slug' => 'impressum',],
+		6 => ['title' => __('Neuigkeiten', 'salonknallenfalls'),'slug' => 'neuigkeiten',],
 	];
 
 	for ($i = 0; $i < count($pages); $i++) {
@@ -360,56 +354,157 @@ add_action('wp_enqueue_scripts', 'ww_load_dashicons');
 function showEvents($post_type)
 {
 	?>
-	<div id="veranstaltungen" class=" mt-24 mx-auto container ">
+	<div id="veranstaltungen" class="mt-12 md:mt-24 mx-auto container max-w-screen-lg ">
       <?php
       $args = [
-      	'post_type' => $post_type,
+      	'post_type' => "event",
       	'post_status' => 'publish',
       	'posts_per_page' => 10,
-      	'orderby' => 'date',
-      	'order' => 'DESC',
+		'meta_key'          => 'event-date',                
+		'meta_value'   => date( "Ymd" ), // change to how "event date" is stored
+		'meta_compare' => '>=',            
+		'orderby' => 'meta_value',  
+		'order' => 'ASC',
       ];
 
       $loop = new WP_Query($args);
 
-      while ($loop->have_posts()):
-      	$loop->the_post(); ?>
-          <div id="post-<?php the_ID(); ?>" <?php post_class(' block mb-12'); ?>>
-                <a class="flex flex-wrap bg-white md:bg-transparent  md:transition-opacity  hover:rounded-lg hover:border-r-2 hover:border-t-2 hover:border-b-2 hover:opacity-80" href="<?php echo esc_url(
+      while ($loop->have_posts()):$loop->the_post(); ?>
+          <div id="post-<?php the_ID(); ?>" <?php post_class('mb-24'); ?>>
+                <a class="flex flex-wrap md:bg-transparent  md:transition-opacity hover:opacity-80" href="<?php echo esc_url(
                 	get_permalink()
-                ); ?>"> 
-                  <?php if (has_post_thumbnail()): ?>
-                    <div class="w-full md:w-2/5">
-                        <?php the_post_thumbnail('square_s'); ?>
-                    </div>
-                  <?php endif; ?>
-                  <div class="w-full p-6 md:w-3/5 md:pl-8 md:pt-6 text-primary">
-                  <h2 class="font-serif bold text-primary entry-title text-xl md:text-2xl font-extrabold leading-tight  mb-4">
-				  <?php
-      the_field('event-date');
-      echo ' um ';
-      the_field('event-time');
-      echo ' Uhr';
-      ?>   	
-					<br>
-					<?php the_title(); ?>	
-                  </h2>  
-                    <p class=" text-lg font-light leading-4"> <?php  ?></p>
-                    <p class=" text-lg font-light leading-4"> <?php the_field('event-description'); ?></p>
-                    <p class=" text-lg font-light leading-4"> <?php the_field('event-ticket'); ?></p>
-                      <div class="font-light text-base leading-6 mb-8 md:block ">
-                        <?php the_excerpt(); ?>
-                      </div>
-
-
+                ); ?>">                  
+              <div class="w-full md:w-2/5 ">
+                <div class="relative">
+                  <?php  
+                    $image = get_field('event-image');
+                    $size = 'square_s'; // (thumbnail, medium, large, full or custom size)
+                    if( $image ) {
+                      echo wp_get_attachment_image( $image, $size );
+                    }
+                  ?>							
+                </div>	
+              </div>                  				  
+                  <div class="w-full pt-4 md:p-6 md:w-3/5 md:pl-16 md:pt-6 place-items-center flex">
+                  	<div>
+				 		          <h2 class="font-serif bold text-primary entry-title text-xl md:text-2xl font-extrabold leading-tight  mb-4">
+                    		<?php 
+                          the_field("event-date");
+                          echo("<br>");
+                          the_title(); 
+                          echo("<br>");                          
+                        ?>
+                  		</h2>  
+                      <span class=" text-secondary text-xl">
+                        <p>
+                        <?php 
+                          $venue = get_field('event-location');
+                          if( $venue ): ?>
+                          <?php echo esc_html( $venue->post_title ); ?>
+                          <?php endif; ?>								
+                        </p>
+                        </span>                  
+						<p class=" text-lg font-light leading-snug"> 
+							<?php 
+								$description = get_field('event-description'); 
+								echo substr($description, 0 , 230)." ...";
+							?>
+						</p>
+						<br>
+						<button>Weiterlesen</button>
+					</div> 
                   </div>
                 </a>
             </div>
-
 		<?php
       endwhile;
       wp_reset_postdata();
+  ?>
+
+    
+      
+  </div>
+  <?php
 }
+
+/**
+ *
+ * Function to show Events at "Programm" Page
+ *
+ */
+
+
+ function showNews()
+ {
+	 ?>
+	 <div id="veranstaltungen" class="mt-12 md:mt-24 mx-auto container max-w-screen-lg ">
+	 <?php
+	 $args = [
+		 'post_type' => "post",
+		 'post_status' => 'publish',
+		 'posts_per_page' => 10,
+		 'order' => 'ASC',
+	 ];
+
+	 $loop = new WP_Query($args);
+
+	 while ($loop->have_posts()):$loop->the_post(); ?>
+		 <div id="post-<?php the_ID(); ?>" <?php post_class('mb-24'); ?>>
+			   <a class="flex flex-wrap md:bg-transparent  md:transition-opacity hover:opacity-80" href="<?php echo esc_url(
+				   get_permalink()
+			   ); ?>"> 
+				 
+			 <div class="w-full md:w-2/5 ">
+			   <div class="relative">
+				 <?php  
+				   if (has_post_thumbnail()){
+					the_post_thumbnail('square_s');
+				   } 
+					?>                                                               
+			   </div>	
+			 </div>                  				  
+				 <div class="w-full pt-4 md:p-6 md:w-3/5 md:pl-16 md:pt-6 place-items-center flex">
+					 <div>
+								  <h2 class="font-serif bold text-primary entry-title text-xl md:text-2xl font-extrabold leading-tight  mb-4">
+						   <?php 
+						 the_date();
+						 echo("<br>");
+						 the_title(); 
+						 echo("<br>");                          
+					   ?>
+						 </h2>  
+					 <span class=" text-secondary text-xl">
+					   <p>
+					   <?php 
+						 $venue = get_field('event-location');
+						 if( $venue ): ?>
+						 <?php echo esc_html( $venue->post_title ); ?>
+						 <?php endif; ?>								
+					   </p>
+					   </span>                  
+					   <p class=" text-lg font-light leading-snug"> 
+						   <?php 							   
+							   the_excerpt(  );							   
+						   ?>
+					   </p>
+					   <br>
+					   <button>Weiterlesen</button>
+				   </div> 
+				 </div>
+			   </a>
+		   </div>
+		   </div>
+	   <?php
+	 endwhile;
+	 wp_reset_postdata();
+}
+/**
+ * Show Carousel for Main Start Page
+ *
+ *
+ * @param $post_type
+ * @return Future Events
+ */
 
 function showCarousel($post_type)
 {
@@ -429,11 +524,11 @@ function showCarousel($post_type)
       $loop = new WP_Query($args);
 
       while ($loop->have_posts()):$loop->the_post(); ?>
-          <div id="post-<?php the_ID(); ?>" <?php post_class('first:ml-[30%] last:mr-[20%] mr-48 mb-[5rem] snap-center'); ?>>                                  
-		  	<a class="flex  md:bg-transparent  md:transition-opacity hover:opacity-80" href="<?php echo esc_url(
+          <div id="post-<?php the_ID(); ?>" <?php post_class('first:md:ml-[30%] first:ml-[20%] last:mr-[20%] mr-48 mb-[4rem] snap-center md:mb-44'); ?>>                                  
+		  	<a class="flex md:flex-nowrap flex-wrap md:bg-transparent  md:transition-opacity hover:opacity-80" href="<?php echo esc_url(
                 	get_permalink()
                 ); ?>"> 				
-				<div class="relative min-w-max	">
+				<div class="relative md:min-w-max w-52">
 					<?php  
 						$image = get_field('event-image');
 						$size = 'square_s'; // (thumbnail, medium, large, full or custom size)
@@ -441,7 +536,7 @@ function showCarousel($post_type)
 							echo wp_get_attachment_image( $image, $size );
 						}
 					?>
-					<div class="drop-shadow-2xl z-40 hover:animate-spin-slow font-bold font-serif text-xl w-40 h-40 text-black bg-white flex place-items-center rounded-full absolute -bottom-20 -right-20">
+					<div class="drop-shadow-2xl z-40 hover:animate-spin-slow font-bold font-serif text-base md:text-xl md:w-40 md:h-40 w-28 h-28  text-black bg-white flex place-items-center rounded-full absolute md:-bottom-20 md:-right-20 -bottom-14 -right-14">
 						<div class=" aligncenter text-center ">
 							<?php 
 								$unixtimestamp = strtotime( get_field('event-date') );
@@ -452,20 +547,27 @@ function showCarousel($post_type)
 						</div>
 					</div>
 				</div>	                  				  
-				<div class="w-[500px] p-6 md:pl-16 md:pt-6 text-primary place-items-center flex">
+				<div class="mt-12 md:w-[500px] p-6 md:pl-16 md:pt-6 text-primary place-items-center flex">
 					<div>
-						<h2 class="font-serif bold text-primary entry-title text-xl md:text-2xl font-extrabold leading-tight  mb-4">
+						<h2 class="font-serif bold text-primary entry-title text-xl md:text-2xl font-extrabold leading-tight mb-4">
 							<?php the_title(); ?>
 						</h2>  
-					
-						<p class=" text-lg font-light leading-snug"> 
+						<!-- <p>
+							<?php 
+								$venue = get_field('event-location');
+								if( $venue ): ?>
+									<?php echo esc_html( $venue->post_title ); ?>
+								<?php endif; 								
+							?>											
+						</p> -->
+						<p class="md:block hidden text-lg font-light leading-snug"> 
 							<?php 
 								$description = get_field('event-description'); 
 								echo substr($description, 0 , 230)." ...";
 							?>
 						</p>
-						<br>
-						<button>Weiterlesen</button>
+						<br>						
+						<button>Mehr erfahren</button>
 					</div> 
 				</div>
                 </a>
@@ -478,7 +580,6 @@ function showCarousel($post_type)
 /**
  * Calendar Download Button
  *
- * @since Quartiersplattform 1.5
  *
  * @param array $post Post ID
  * @return string
@@ -487,6 +588,45 @@ function calendar_download($post) {
 	
 	get_template_part( 'components/calendar_download');
 
+}
+
+
+/**
+ * Calendar Download Button
+ *
+ *
+ * @param array $post Post ID
+ * @return string
+ */
+
+function newsletter_popup(){
+	?>
+	<div id="info-popup" tabindex="-1" class="fixed bottom-0  left-0 z-50 w-screen bg-white h-modal ">
+  <div class=" text-black relative w-full h-full md:h-auto">
+      <div class="pt-6 pl-[20%] items-center place-items-center relative shadow ">
+          <div class="  mb-4 text-sm font-light ">
+              <h3 class="mb-3 text-2xl font-serif font-bold">Newsletter
+              <span class=" inline-block">X</span>
+              </h3>
+              
+              <p>
+                  Melde dich für unseren Newsletter an 
+                  und verpasse keine Veranstaltungen!
+              </p>
+          </div>
+          <div class="justify-between items-center pt-0 space-y-4 sm:flex sm:space-y-0">
+              <div class="items-center space-y-4 ">
+              <input class="text-xl font-light placeholder:text-gray-400 block bg-gray-200 w-full border py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1" placeholder="Deine E-Mail Adresse" type="email" name="search"/>
+
+                  <button id="close-modal" type="button"  class="btn-black p-4">Abschicken</button>                              
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+	<?php
 }
 
 ?>

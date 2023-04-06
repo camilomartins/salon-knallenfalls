@@ -1,34 +1,36 @@
-<div class=" " id="post-<?php the_ID(); ?>" > <?php// post_class(); ?>
-	<h1 class="text-primary">Single Content</h1>
-	<div class=" z-0 absolute left-0 right-0 bottom-0 top-[112px] lg:top-[152px]">
-		
+<div class="" id="post-<?php the_ID(); ?>" > <?php// post_class(); ?>
+	<div class="relative    md:px-12 container shrink mx-auto  min-h-screen">
+		<div id="post-<?php the_ID(); ?>" <?php post_class('mb-24 flex flex-wrap md:flex-nowrap'); ?>> 
+				<div class=" md:w-1/2 ">                                      
+					<div class="relative">
+						<div class="z-0 bg-slate-300">
+							<?php  
+							the_post_thumbnail("square_l");
+							?>
+						</div>						
+						<div class="z-50 -mt-16 md:-mr-0 -mr-3 object-center float-right hover:animate-spin-slow font-bold font-serif text-xl w-40 h-40 text-black bg-white  place-items-center relative rounded-full md:absolute md:-bottom-20  md:-right-20">
+							<div class="w-40 h-40 text-center flex place-items-center">
+								<div>
+								<?php 									
+									echo get_the_date();
+								?>	
+								</div>														
+							</div>
+						</div>
+					</div>                    			                	
+				</div>				  
+				<div class="ml-0 md:ml-24 mt-10 md:mt-60 md:p-6 md:w-1/2 md:pl-16 md:pt-6 text-primary place-items-center">
+                  	<div class="">
+				 		<h2 class="font-serif bold text-primary entry-title text-xl md:text-2xl font-extrabold leading-snug  mb-4">
+                    		<?php the_title(); ?>
+                  		</h2>												                  
+						<p class=" text-lg font-light leading-snug"> 
+							<?php 
+								the_content();
+							?>
+						</p>																				
+					</div> 
+                  </div>
+            </div>
 	</div>
-
-	<div class="relative py-6 md:py-16 md:px-12 z-10 container my-8 mx-auto mt-[20vh] min-h-screen max-w-screen-lg">
-		<header class="mb-4">
-			<?php the_post_thumbnail("fullwidth"); ?>	
-			<br>
-			<time datetime="<?php echo get_the_date( 'c' ); ?>" itemprop="datePublished" class="text-sm text-primary"><?php echo get_the_date(); ?></time>
-			<?php the_title( sprintf( '<h1 class="entry-title  text-xl lg:text-4xl font-extrabold leading-tight mb-1 text-red"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
-		</header>
-
-		<div class="md:max-w-80">
-			<?php the_content(); ?>
-
-			<?php
-				// the_post_thumbnail();
-				wp_link_pages(
-					array(
-						'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'tailpress' ) . '</span>',
-						'after'       => '</div>',
-						'link_before' => '<span>',
-						'link_after'  => '</span>',
-						'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'tailpress' ) . ' </span>%',
-						'separator'   => '<span class="screen-reader-text">, </span>',
-					)
-				);
-			?>
-		</div>
-	</div>
-
 </div>

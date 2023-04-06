@@ -20,8 +20,7 @@ $featured_posts = get_field('field_63fa3b625b1a4');
     <h1 class="font-serif  text-2xl font-bold mb-4">Spielstätten</h1>    
     <?php
     if( $featured_posts ): ?>
-    <div class="post ">
-        
+    <div class="post "> 
         <div class="flex flex-wrap ">    
             <?php foreach( $featured_posts as $featured_post ): ?>
             <div class="venue flex mb-4">
@@ -33,13 +32,13 @@ $featured_posts = get_field('field_63fa3b625b1a4');
                     $image = get_field('field_63ed14761fbc0', $featured_post->ID);
                     $size = 'square_s'; // (thumbnail, medium, large, full or custom size)
                     ?>
-                    <div class="image w-56  ">
+                    <div class="image md:w-56 w-1/2 ">
                         <?php if( $image ) {
                             echo wp_get_attachment_image( $image, $size );
                         }
                         ?>
                     </div>                                    
-                    <div class="description ml-6  w-56">            
+                    <div class="description ml-6  md:w-56 w-1/2">            
                         <h1 class="font-serif  text-xl font-light leading-tight  mb-4">
                             <?php echo ($title); ?>
                         </h1>
@@ -56,26 +55,27 @@ $featured_posts = get_field('field_63fa3b625b1a4');
 </section>
 <?php else: 
 ?>
-<div class="post text-primary">
-    
-<div class="flex flex-wrap bg-black mb-4">    
-    <div class="venue flex">
-            <div class="image w-56 h-56 bg-slate-300">
-                        
-            </div>                                    
-            <div class="description ml-6  w-56">            
-                <h1 class="font-serif  text-xl font-light leading-tight  mb-4">
-                    Beispielevent
-                </h1>
-                <span class="font-light"> 
-                    100 Plätze
-                <br>
-                <br>
-                Hier steht die Adresse
-                </span>
+
+<!-- Preview, when Block is generated in Gutenberg Editor -->
+<div class="post text-primary">    
+    <div class="flex flex-wrap bg-black mb-4">    
+        <div class="venue flex">
+                <div class="image w-56 h-56 bg-slate-300">
+                            
+                </div>                                    
+                <div class="description ml-6  w-56">            
+                    <h1 class="font-serif  text-xl font-light leading-tight  mb-4">
+                        Beispielevent
+                    </h1>
+                    <span class="font-light"> 
+                        100 Plätze
+                    <br>
+                    <br>
+                    Hier steht die Adresse
+                    </span>
+                </div>
             </div>
-        </div>
-</div>
+    </div>
 </div>
 
 <?php
