@@ -8,7 +8,7 @@
 <?php do_action( 'tailpress_content_after' ); ?>
 
 
-<footer id="colophon" class="md:mt-16 font-serif site-footer pb-2 text-slate-50" role="contentinfo">
+<footer id="colophon" class="font-serif site-footer pb-2 text-slate-50" role="contentinfo">
 	<?php do_action( 'tailpress_footer' ); ?>
 	<div class="mx-auto justify-between md:grid  md:grid-cols-2 mt-8  text-sm flex">
 		<div class="text-primary md:block hover:text-white space-x-4 flex mr-10 ">

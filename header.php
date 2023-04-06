@@ -29,7 +29,7 @@
 	</script> 
 </head>
 
-<body <?php body_class( 'h-full md:ml-24 md:mt-8 md:mr-24 ml-8 mr-8 mt-8 antialiased  bg-slate-80 bg-background' ); ?>>
+<body <?php body_class( 'h-full md:pl-24 md:pt-8 md:pr-24 pl-8 pr-8 pt-8 antialiased bg-slate-80 bg-background' ); ?>>
 
 <!-- Preloader -->
 <!-- <div class="preloader">

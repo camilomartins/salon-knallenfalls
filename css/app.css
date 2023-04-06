@@ -1449,6 +1449,34 @@ video {
   width: 9rem;
 }
 
+.w-\[800px\] {
+  width: 800px;
+}
+
+.w-\[600px\] {
+  width: 600px;
+}
+
+.w-\[700px\] {
+  width: 700px;
+}
+
+.w-\[32rm\] {
+  width: 32rm;
+}
+
+.w-\[32rem\] {
+  width: 32rem;
+}
+
+.w-\[40rem\] {
+  width: 40rem;
+}
+
+.w-\[38rem\] {
+  width: 38rem;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -2522,6 +2550,14 @@ video {
 
 .pt-44 {
   padding-top: 11rem;
+}
+
+.pr-8 {
+  padding-right: 2rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
 }
 
 .text-left {
@@ -4599,6 +4635,10 @@ footer .dashicons{
     margin-top: 6rem;
   }
 
+  .md\:mt-14 {
+    margin-top: 3.5rem;
+  }
+
   .md\:block {
     display: block;
   }
@@ -4714,6 +4754,18 @@ footer .dashicons{
 
   .md\:pl-48 {
     padding-left: 12rem;
+  }
+
+  .md\:pr-24 {
+    padding-right: 6rem;
+  }
+
+  .md\:pt-8 {
+    padding-top: 2rem;
+  }
+
+  .md\:pl-24 {
+    padding-left: 6rem;
   }
 
   .md\:text-2xl {
