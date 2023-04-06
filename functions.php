@@ -395,7 +395,7 @@ function showEvents($post_type)
                           echo("<br>");                          
                         ?>
                   		</h2>  
-                      <span class=" text-secondary text-xl">
+                      <span class=" text-primary text-xl">
                         <p>
                         <?php 
                           $venue = get_field('event-location');
@@ -547,7 +547,7 @@ function showCarousel($post_type)
 						</div>
 					</div>
 				</div>	                  				  
-				<div class="mt-12 w-[38rem] p-6 md:pl-16 md:pt-6 text-primary place-items-center flex">
+				<div class="mt-12 w-[36rem] p-6 md:pl-16 md:pt-6 text-primary place-items-center flex">
 					<div>
 						<h2 class="font-serif bold text-primary entry-title text-xl md:text-2xl font-extrabold leading-tight mb-4">
 							<?php the_title(); ?>
