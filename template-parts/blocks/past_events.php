@@ -27,7 +27,7 @@ $featured_posts = get_field('field_63fa3b625b1a4');
                 'meta_value'   => date( "Ymd" ), // change to how "event date" is stored
                 'meta_compare' => '<',            
                 'orderby'           => 'meta_value',      	
-                'order' => 'ASC',
+                'order' => 'DESC',
             ];
             $loop = new WP_Query($args);
             if($loop->have_posts()){

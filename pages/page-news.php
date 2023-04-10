@@ -7,7 +7,7 @@
  */
       get_header(); 
 ?>
-<div id="veranstaltungen" class="scroll-smooth snap-x w-screen ml-[calc(50%-50vw)] mt-24 mx-auto flex overflow-x-auto scrollbar-hide">
+<div id="carousel" class="scroll-smooth snap-x ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] mt-24 flex overflow-visible overflow-x-auto scrollbar-hide">
       <?php 
             showCarousel("event");      
       ?>      

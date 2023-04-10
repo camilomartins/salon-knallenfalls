@@ -443,7 +443,7 @@ function showEvents($post_type)
 		 'post_type' => "post",
 		 'post_status' => 'publish',
 		 'posts_per_page' => 10,
-		 'order' => 'ASC',
+		 'order' => 'DESC',
 	 ];
 
 	 $loop = new WP_Query($args);
@@ -473,15 +473,18 @@ function showEvents($post_type)
 						 echo("<br>");                          
 					   ?>
 						 </h2>  
-					 <span class=" text-secondary text-xl">
-					   <p>
+					 
+					   
 					   <?php 
 						 $venue = get_field('event-location');
 						 if( $venue ): ?>
-						 <?php echo esc_html( $venue->post_title ); ?>
-						 <?php endif; ?>								
-					   </p>
-					   </span>                  
+							<span class=" text-primary text-xl">
+								<p>
+									<?php echo esc_html( $venue->post_title ); ?>
+								</p>
+							</span>                  
+						 <?php endif; ?>													   
+					   
 					   <p class=" text-lg font-light leading-snug"> 
 						   <?php 							   
 							   the_excerpt(  );							   
@@ -493,10 +496,13 @@ function showEvents($post_type)
 				 </div>
 			   </a>
 		   </div>
-		   </div>
+		   
 	   <?php
 	 endwhile;
 	 wp_reset_postdata();
+	 ?>
+	 </div>
+	<?php	 
 }
 /**
  * Show Carousel for Main Start Page
@@ -524,7 +530,7 @@ function showCarousel($post_type)
       $loop = new WP_Query($args);
 
       while ($loop->have_posts()):$loop->the_post(); ?>
-          <div id="post-<?php the_ID(); ?>" <?php post_class('first:md:ml-[30%] first:ml-[20%] last:mr-[20%] mr-48 mb-[4rem] snap-center md:mb-44'); ?>>                                  
+          <div id="post-<?php the_ID(); ?>" <?php post_class('first:md:ml-[30%] first:ml-[20%] last:mr:mr-[30%] last:mr-[20%] mr-48 mb-[4rem] snap-center md:mb-44'); ?>>                                  
 		  	<a class="flex md:flex-nowrap flex-wrap md:bg-transparent  md:transition-opacity hover:opacity-80" href="<?php echo esc_url(
                 	get_permalink()
                 ); ?>"> 				
@@ -536,7 +542,7 @@ function showCarousel($post_type)
 							echo wp_get_attachment_image( $image, $size );
 						}
 					?>
-					<div class="drop-shadow-2xl z-40 hover:animate-spin-slow font-bold font-serif text-base md:text-xl md:w-40 md:h-40 w-28 h-28  text-black bg-white flex place-items-center rounded-full absolute md:-bottom-20 md:-right-20 -bottom-14 -right-14">
+					<div class="p-4 drop-shadow-2xl z-40 hover:animate-spin-slow font-bold font-serif text-base md:text-xl md:w-40 md:h-40 w-28 h-28  text-black bg-white flex place-items-center rounded-full absolute md:-bottom-20 md:-right-20 -bottom-14 -right-14">
 						<div class=" aligncenter text-center ">
 							<?php 
 								$unixtimestamp = strtotime( get_field('event-date') );
