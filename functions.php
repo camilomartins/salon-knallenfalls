@@ -530,11 +530,11 @@ function showCarousel($post_type)
       $loop = new WP_Query($args);
 
       while ($loop->have_posts()):$loop->the_post(); ?>
-          <div id="post-<?php the_ID(); ?>" <?php post_class('first:md:ml-[30%] first:ml-[20%] last:mr:mr-[30%] last:mr-[20%] mr-48 mb-[4rem] snap-center md:mb-44'); ?>>                                  
+          <div id="post-<?php the_ID(); ?>" <?php post_class('first:md:ml-[30%] first:ml-[20%] last:mr:mr-[30%] last:mr-[20%] mr-16 md:mr-48 mb-[4rem] snap-center md:mb-44'); ?>>                                  
 		  	<a class="flex md:flex-nowrap flex-wrap md:bg-transparent  md:transition-opacity hover:opacity-80" href="<?php echo esc_url(
                 	get_permalink()
                 ); ?>"> 				
-				<div class="relative md:min-w-max w-52">
+				<div class="relative md:min-w-max w-64">
 					<?php  
 						$image = get_field('event-image');
 						$size = 'square_s'; // (thumbnail, medium, large, full or custom size)
@@ -553,7 +553,7 @@ function showCarousel($post_type)
 						</div>
 					</div>
 				</div>	                  				  
-				<div class="mt-12 w-[36rem] p-6 md:pl-16 md:pt-6 text-primary place-items-center flex">
+				<div class="mt-12 md:w-[36rem] p-6 md:pl-16 md:pt-6 text-primary place-items-center flex">
 					<div>
 						<h2 class="font-serif bold text-primary entry-title text-xl md:text-2xl font-extrabold leading-tight mb-4">
 							<?php the_title(); ?>

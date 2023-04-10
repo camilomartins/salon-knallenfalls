@@ -464,6 +464,22 @@
   margin-right: calc(50% - 50vw)
 }
 
+.mr-20 {
+  margin-right: 5rem
+}
+
+.mr-12 {
+  margin-right: 3rem
+}
+
+.mr-14 {
+  margin-right: 3.5rem
+}
+
+.mr-16 {
+  margin-right: 4rem
+}
+
 .box-border {
   box-sizing: border-box
 }
@@ -834,6 +850,10 @@
 
 .w-screen {
   width: 100vw
+}
+
+.w-64 {
+  width: 16rem
 }
 
 .min-w-0 {
@@ -3612,6 +3632,10 @@ body {
     margin-top: 15rem
   }
 
+  .md\:mr-48 {
+    margin-right: 12rem
+  }
+
   .md\:block {
     display: block
   }
@@ -3666,6 +3690,10 @@ body {
 
   .md\:w-56 {
     width: 14rem
+  }
+
+  .md\:w-\[36rem\] {
+    width: 36rem
   }
 
   .md\:min-w-max {

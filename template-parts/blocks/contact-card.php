@@ -43,9 +43,9 @@ $image = get_field('image') ?: 'https://freibad-mirke.de';
                     <p class="text-base text-light">
                         <?php echo $position; ?>
                         <br>
-                        <?php echo $phone; ?>
+                        <a href="tel:<?php echo $phone; ?>"><?php echo $phone; ?></a>                        
                         <br>
-                        <?php echo $mail; ?>
+                        <a href="mailto:<?php echo $mail; ?>"><?php echo $mail; ?></a>                        
                     </p>
                 </div>
             </div>
@@ -65,7 +65,7 @@ $image = get_field('image') ?: 'https://freibad-mirke.de';
                 <br>
                 <?php echo $phone; ?>
                 <br>
-                <?php echo $mail; ?>
+                <?php echo $mail; ?>                
             </p>
         </div>
     </div>
