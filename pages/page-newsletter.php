@@ -19,10 +19,10 @@ get_header(); ?>
   	</p>									
   	<div class="mc-field-group">
 		<label for="mce-EMAIL">
-			Email Addresse  
+			E-Mail Adresse  
 			<span class="asterisk">*</span>
 		</label>
-		<input placeholder="Gib hier deine E-Mail Adresse ein" type="email" value="" name="EMAIL" class="text-base w-full font-serif font-light placeholder:text-gray-400 block bg-gray-200 border py-2 pl-2 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 required email" id="mce-EMAIL" required>
+		<input placeholder="Gib hier deine E-Mail Adresse ein" type="email" value="" name="EMAIL" class="text-black text-base w-full font-serif font-light placeholder:text-gray-400 block bg-gray-200 border py-2 pl-2 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 required email" id="mce-EMAIL" required>
 		<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
   	</div>
   	<div id="mce-responses" class="clear foot">
