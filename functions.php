@@ -247,10 +247,11 @@ function get_custom_post_type_template($page_template)
 		$page_template = get_stylesheet_directory() . '/pages/page-presse.php';
 	} elseif ($title == 'Newsletter') {
 		$post_states[] = $prefix . 'Newsletter';
+		$page_template = get_stylesheet_directory() . '/pages/page-newsletter.php';
 	} elseif ($title == 'Neuigkeiten') {
 		$post_states[] = $prefix . 'Neuigkeiten';
 		$page_template = get_stylesheet_directory() . '/pages/page-news-posts.php';
-	}
+	} 
 
 	if (doing_filter('page_template') && !empty($page_template)) {
 		return $page_template;
@@ -299,15 +300,6 @@ function create_pages()
 		}
 	}
 }
-
-/**
- *
- * Set Home Page Settings
- *
- */
-$about = get_page_by_title('News');
-update_option('page_on_front', $about->ID);
-update_option('show_on_front', 'page');
 
 /**
  *
@@ -523,14 +515,14 @@ function showCarousel($post_type)
       	'meta_key'          => 'event-date',                
 		'meta_value'   => date( "Ymd" ), // change to how "event date" is stored
 		'meta_compare' => '>=',            
-		'orderby'           => 'meta_value',  
+		'orderby'   => 'meta_value',  
       	'order' => 'ASC',
       ];
 
       $loop = new WP_Query($args);
 
       while ($loop->have_posts()):$loop->the_post(); ?>
-          <div id="post-<?php the_ID(); ?>" <?php post_class('first:md:ml-[30%] first:ml-[20%] last:mr:mr-[30%] last:mr-[20%] mr-16 md:mr-48 mb-[4rem] snap-center md:mb-44'); ?>>                                  
+          <div id="post-<?php the_ID(); ?>" <?php post_class('first:md:ml-[30%] first:ml-[20%] last:mr:mr-[30%] last:mr-[20%] mr-16 md:mr-32 mb-[4rem] snap-center md:mb-44'); ?>>                                  
 		  	<a class="flex md:flex-nowrap flex-wrap md:bg-transparent  md:transition-opacity hover:opacity-80" href="<?php echo esc_url(
                 	get_permalink()
                 ); ?>"> 				
@@ -606,33 +598,64 @@ function calendar_download($post) {
  */
 
 function newsletter_popup(){
+	// Überprüfen, ob der Popup-Cookie noch nicht gesetzt wurde
+	if (!isset($_COOKIE['popup_closed'])) {
+	// Div-Element mit dem Popup-Inhalt ausgeben
 	?>
-	<div id="info-popup" tabindex="-1" class="fixed bottom-0  left-0 z-50 w-screen bg-white h-modal ">
-  <div class=" text-black relative w-full h-full md:h-auto">
-      <div class="pt-6 pl-[20%] items-center place-items-center relative shadow ">
-          <div class="  mb-4 text-sm font-light ">
-              <h3 class="mb-3 text-2xl font-serif font-bold">Newsletter
-              <span class=" inline-block">X</span>
-              </h3>
-              
-              <p>
-                  Melde dich für unseren Newsletter an 
-                  und verpasse keine Veranstaltungen!
-              </p>
-          </div>
-          <div class="justify-between items-center pt-0 space-y-4 sm:flex sm:space-y-0">
-              <div class="items-center space-y-4 ">
-              <input class="text-xl font-light placeholder:text-gray-400 block bg-gray-200 w-full border py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1" placeholder="Deine E-Mail Adresse" type="email" name="search"/>
-
-                  <button id="close-modal" type="button"  class="btn-black p-4">Abschicken</button>                              
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
-
-
+	<div id="popup" tabindex="-1" class="fixed bottom-0  left-0 z-50 w-screen bg-white h-modal ">
+		<div class="  text-black relative w-full h-full md:h-auto pt-6 pl-8  md:pr-[20%] md:pl-[20%] items-center place-items-center">
+			<div class="bg-slate-  mb-4 text-sm font-light pr-8">
+				<div class="flex font-serif font-bold justify-between">
+					<span class=" mb-3 text-xl md:text-2xl">Newsletter abonnieren</span>		
+					<span class=" text-right close cursor-pointer hover:text-slate-400 text-xl md:text-2xl "> X</span>
+				</div>
+				<!-- Begin Mailchimp Signup Form -->													
+				<form class="space-y-2 md:w-1/3" action="https://salonknallenfalls.us13.list-manage.com/subscribe/post?u=a1700f15a4c2930db37b084f1&amp;id=fa33d1b16b&amp;f_id=00fa96e2f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>					
+					<p>
+						Melde dich für unseren Newsletter an 
+						und verpasse keine Veranstaltungen!	
+					</p>									
+					<div class="mc-field-group">
+						<label for="mce-EMAIL">
+							Email Addresse  
+							<span class="asterisk">*</span>
+						</label>
+						<input placeholder="Gib hier deine E-Mail Adresse ein" type="email" value="" name="EMAIL" class="font-serif text-s w-full font-light placeholder:text-gray-400 block bg-gray-200 border py-2 pl-2 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 required email" id="mce-EMAIL" required>
+						<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+					</div>
+					<div id="mce-responses" class="clear foot">
+						<div class="response" id="mce-error-response" style="display:none"></div>
+						<div class="response" id="mce-success-response" style="display:none"></div>
+					</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+					<div style="position: absolute; left: -5000px;" aria-hidden="true">
+						<input type="text" name="b_a1700f15a4c2930db37b084f1_fa33d1b16b" tabindex="-1" value="">
+					</div>
+					<div class="optionalParent">
+						<div class="clear foot">
+							<input type="submit" value="Anmelden" name="subscribe" id="mc-embedded-subscribe" class="cursor btn-black p-4" >											
+						</div>
+					</div>
+				</form>
+				
+				<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+				<!--End mc_embed_signup-->																							
+			</div>				
+		</div>
+		<div >
+    	</div>
+	</div>
+    <!-- JavaScript-Code, der auf den Klick auf das Schließen-Symbol reagiert und den Popup-Cookie setzt -->
+    <script>
+            document.querySelector("#popup .close").addEventListener("click", function() {
+              document.getElementById("popup").style.display = "none";
+              var date = new Date();
+              // Cookie wird eine Stunde lang gültig sein
+              date.setTime(date.getTime() + (1 * 60 * 60 * 1000));
+              document.cookie = "popup_closed=1; expires=" + date.toUTCString() + "; path=/";
+            });
+	</script>
 	<?php
+	}
 }
 
 ?>

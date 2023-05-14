@@ -10,10 +10,10 @@
 	<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	
 	<?php 
-	wp_enqueue_script("jquery");
+	// wp_enqueue_script("jquery");
 	wp_head(); ?>
 
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		// makes sure the whole site is loaded
 		jQuery(window).load(function () {
 			"use strict";
@@ -26,10 +26,10 @@
 				jQuery(".preloader").css('display','none');
 			}
 		}); 
-	</script> 
+	</script>  -->
 </head>
 
-<body <?php body_class( 'scrollbar-hide h-full md:pl-24 md:pr-24 pl-8 pr-8 pt-8 antialiased bg-slate-80 bg-background' ); ?>>
+<body <?php body_class('scrollbar-hide h-full md:pl-24 md:pr-24 pl-8 pr-8 md:pt-0 pt-8 md:mt-4 antialiased bg-slate-80 bg-background'); ?>>
 
 <!-- Preloader -->
 <!-- <div class="preloader">

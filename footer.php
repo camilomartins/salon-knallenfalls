@@ -6,6 +6,9 @@
 </div>
 
 <?php do_action( 'tailpress_content_after' ); ?>
+<?php 
+      newsletter_popup();   
+?>                    
 
 
 <footer id="colophon" class="font-serif site-footer pb-2 text-slate-50" role="contentinfo">

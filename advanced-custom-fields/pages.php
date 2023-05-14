@@ -1,28 +1,29 @@
 <?php 
-
-
-
-
 /**
  *  --------------------------------------------------------
- *  5. Create Pages
+ *  1. Create Pages
  *  --------------------------------------------------------
  */
 
 
 /**
  *  --------------------------------------------------------
- *  4. Set Home Page
+ *  2. Set Home Page
  *  --------------------------------------------------------
  */
-
-
 function themename_after_setup_theme() {
   
-    $site_type = get_option('show_on_front');
-    $home = get_page_by_title( 'Freibad', OBJECT, 'page' );
+    $array_of_objects = get_posts([
+        'title' => 'News',
+        'post_type' => 'any',
+    ]);
+    $id = $array_of_objects[0];
+    $id = $id->ID;
+    update_option('page_on_front', $id);
+    update_option('show_on_front', 'page');
 }
 add_action( 'after_setup_theme', 'themename_after_setup_theme' );
+
 
 /**
  *  --------------------------------------------------------

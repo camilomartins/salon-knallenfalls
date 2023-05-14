@@ -12,9 +12,7 @@
             showCarousel("event");      
       ?>      
 </div>
-<?php 
-    //   newsletter_popup();   
-?>                    
+
 <?php get_footer(); ?>
 
 

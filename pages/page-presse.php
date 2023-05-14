@@ -2,7 +2,7 @@
 
 /**
  *
- * Template Name: Veranstaltungen
+ * Template Name: Presse
  * Template Post Type: page
  *
  */
