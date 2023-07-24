@@ -928,8 +928,8 @@ video {
   margin-bottom: 10px;
 }
 
-.mb-\[4rem\] {
-  margin-bottom: 4rem;
+.mb-\[2rem\] {
+  margin-bottom: 2rem;
 }
 
 .mb-\[5rem\] {
@@ -1458,6 +1458,10 @@ video {
   flex: 1 1 auto;
 }
 
+.flex-shrink {
+  flex-shrink: 1;
+}
+
 .shrink {
   flex-shrink: 1;
 }
@@ -1798,6 +1802,10 @@ video {
   flex-wrap: nowrap;
 }
 
+.place-content-center {
+  place-content: center;
+}
+
 .place-items-center {
   place-items: center;
 }
@@ -1828,6 +1836,12 @@ video {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
@@ -3394,6 +3408,9 @@ footer .dashicons{
 }
 
 .btn-black {
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;

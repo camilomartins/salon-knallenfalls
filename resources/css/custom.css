@@ -220,7 +220,7 @@ footer .dashicons{
   @apply   text-xl block p-4 font-serif  border-solid border-1 border-white ;
 }
 .btn-black{
-  @apply  text-white hover:bg-white hover:text-black bg-black hover:border-black ;
+  @apply  text-white hover:bg-white hover:text-black bg-black hover:border-black border-white border-1 ;
 }
 .btn-white{
   @apply hover:bg-black hover:text-white text-black bg-white hover:border-white;
