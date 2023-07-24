@@ -8,7 +8,7 @@
 							the_post_thumbnail("square_l");
 							?>
 						</div>						
-						<div class="z-50 -mt-16 md:-mr-0 -mr-3 object-center float-right hover:animate-spin-slow font-bold font-serif text-xl w-40 h-40 text-black bg-white  place-items-center relative rounded-full md:absolute md:-bottom-20  md:-right-20">
+						<div class="p-4 drop-shadow-2xl z-40 hover:animate-spin-slow font-bold font-serif text-base md:text-xl md:w-40 md:h-40 w-28 h-28  text-black bg-white flex place-items-center rounded-full absolute md:-bottom-20 md:-right-20 -bottom-14 -right-14">
 							<div class="w-40 h-40 text-center flex place-items-center">
 								<div>
 								<?php 									
