@@ -31,7 +31,7 @@ module.exports = {
                 'spin-slow': 'spin 2s ease-in-out infinite ',
             },
             animation: {
-                'infinite-scroll-mobile': 'infinite-scroll 80s ease-in-out infinite',
+                'infinite-scroll-mobile': 'infinite-scroll 200s ease-in-out infinite',
                 'infinite-scroll-desktop': 'infinite-scroll 200s ease-in-out infinite',
               },
               keyframes: {
