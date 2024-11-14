@@ -1156,8 +1156,8 @@
 }
 
 .animate-infinite-scroll-mobile {
-  -webkit-animation: infinite-scroll 80s ease-in-out infinite;
-          animation: infinite-scroll 80s ease-in-out infinite
+  -webkit-animation: infinite-scroll 200s ease-in-out infinite;
+          animation: infinite-scroll 200s ease-in-out infinite
 }
 
 .cursor-default {
