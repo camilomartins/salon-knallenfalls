@@ -18,10 +18,12 @@ while ($loop->have_posts()):$loop->the_post(); ?>
           <div class="relative min-w-max	">
               <?php  
                   $image = get_field('event-image');
+                  $caption = $image['caption'];
                   $size = 'square_s'; // (thumbnail, medium, large, full or custom size)
                   if( $image ) {
                       echo wp_get_attachment_image( $image, $size );
                   }
+                  
               ?>
               <div class="z-40 hover:animate-spin-slow font-bold font-serif text-xl w-40 h-40 text-black bg-white flex place-items-center rounded-full absolute -bottom-20 -right-20">
                   <div class=" aligncenter text-center ">
@@ -32,7 +34,7 @@ while ($loop->have_posts()):$loop->the_post(); ?>
                           the_field("event-date");
                       ?>															
                   </div>
-              </div>
+              </div>              
           </div>	                  				  
           <div class="w-[500px] p-6 md:pl-16 md:pt-6 text-primary place-items-center flex">
               <div>

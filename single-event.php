@@ -19,7 +19,7 @@
 								$size = 'square_l'; // (thumbnail, medium, large, full or custom size)
 								if( $image ) {
 								echo wp_get_attachment_image( $image, $size );
-								}
+								}								
 								?>
 							</div>
 						
@@ -34,11 +34,12 @@
 									</div>														
 								</div>
 							</div>
+							
 						</div>
-                    			                	
+                    	<span class=""><?php showCopyright($image); ?></span>
 				</div>
 				  
-				<div class="ml-0 md:ml-24 mt-10 md:mt-60 md:p-6 md:w-1/2 md:pl-16 md:pt-6 text-primary place-items-center">
+				<div class="ml-0 md:ml-24 mt-12 md:mt-60 md:p-6 md:w-1/2 md:pl-16 md:pt-6 text-primary place-items-center">
                   	<div class="">
 				 		<h2 class="font-serif bold text-primary entry-title text-xl md:text-2xl font-extrabold leading-snug  mb-4">
                     		<?php the_title(); ?>

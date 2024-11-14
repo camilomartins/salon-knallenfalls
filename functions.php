@@ -335,6 +335,8 @@ function ww_load_dashicons(){
 add_action('wp_enqueue_scripts', 'ww_load_dashicons');
 
 
+@ini_set( ‘upload_max_size’ , ‘256M’ );
+
 
 /**
  *
@@ -374,6 +376,7 @@ function showEvents($post_type)
                     if( $image ) {
                       echo wp_get_attachment_image( $image, $size );
                     }
+					showCopyright($image);
                   ?>							
                 </div>	
               </div>                  				  
@@ -452,6 +455,7 @@ function showEvents($post_type)
 				   if (has_post_thumbnail()){
 					the_post_thumbnail('square_s');
 				   } 
+				   showCopyright(get_post_thumbnail_id());
 					?>                                                               
 			   </div>	
 			 </div>                  				  
@@ -528,11 +532,13 @@ function showCarousel($post_type)
                 ); ?>"> 				
 				<div class="relative md:min-w-max w-64">
 					<?php  
-						$image = get_field('event-image');
-						$size = 'square_s'; // (thumbnail, medium, large, full or custom size)
+						$image = get_field('event-image');												
+						$size = 'square_s'; // (thumbnail, medium, large, full or custom size)						
+
 						if( $image ) {
 							echo wp_get_attachment_image( $image, $size );
-						}
+						}	
+						showCopyright($image);						
 					?>
 					<div class="p-4 drop-shadow-2xl z-40 hover:animate-spin-slow font-bold font-serif text-base md:text-xl md:w-40 md:h-40 w-28 h-28  text-black bg-white flex place-items-center rounded-full absolute md:-bottom-20 md:-right-20 -bottom-14 -right-14">
 						<div class=" aligncenter text-center ">
@@ -587,6 +593,24 @@ function calendar_download($post) {
 	get_template_part( 'components/calendar_download');
 
 }
+
+/**
+ * Calendar Download Button
+ *
+ *
+ * @param $image id
+ * @return string
+ */
+
+function showCopyright($image){
+	$fotograf = get_post_field( 'post_excerpt', $image );						
+	if($fotograf == ""){							
+		echo "<p class='mt-2 text-sm font-light'>© Julian Dell</p>";
+	}else{							
+		echo "<p class='mt-2 text-sm font-light'>© ".$fotograf."</p>";
+	}
+}
+
 
 
 /**

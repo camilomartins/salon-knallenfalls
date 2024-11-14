@@ -868,10 +868,6 @@ video {
   margin-bottom: 5px;
 }
 
-.-mt-16 {
-  margin-top: -4rem;
-}
-
 .-mt-3 {
   margin-top: -0.75rem;
 }
@@ -1022,6 +1018,14 @@ video {
 
 .mt-\[3px\] {
   margin-top: 3px;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-14 {
+  margin-top: 3.5rem;
 }
 
 .box-border {
@@ -2223,11 +2227,6 @@ video {
   fill: #fff;
 }
 
-.object-center {
-  -o-object-position: center;
-     object-position: center;
-}
-
 .p-0 {
   padding: 0px;
 }
@@ -2258,6 +2257,10 @@ video {
 
 .p-\[auto\] {
   padding: auto;
+}
+
+.p-24 {
+  padding: 6rem;
 }
 
 .\!py-0 {
@@ -2440,6 +2443,22 @@ video {
 
 .pt-\[0\.37rem\] {
   padding-top: 0.37rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
+.pb-20 {
+  padding-bottom: 5rem;
+}
+
+.pt-20 {
+  padding-top: 5rem;
+}
+
+.pt-24 {
+  padding-top: 6rem;
 }
 
 .text-left {
@@ -4408,10 +4427,6 @@ footer .dashicons{
 }
 
 @media (min-width: 782px) {
-  .md\:absolute {
-    position: absolute;
-  }
-
   .md\:-bottom-20 {
     bottom: -5rem;
   }
