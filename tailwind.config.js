@@ -28,9 +28,19 @@ module.exports = {
             colors: tailpress.colorMapper(tailpress.theme('settings.color.palette', theme)),
             fontSize: tailpress.fontSizeMapper(tailpress.theme('settings.typography.fontSizes', theme)),
             animation: {
-                'spin-slow': 'spin 10s linear infinite',
-            }
-            
+                'spin-slow': 'spin 2s ease-in-out infinite ',
+            },
+            animation: {
+                'infinite-scroll-mobile': 'infinite-scroll 80s ease-in-out infinite',
+                'infinite-scroll-desktop': 'infinite-scroll 200s ease-in-out infinite',
+              },
+              keyframes: {
+                'infinite-scroll': {
+                  '0%': { transform: 'translateX(0)' },
+                  '50%': { transform: 'translateX(-100%)' },
+                  '100%': { transform: 'translateX(0)' },                  
+                }
+              }   
         },
         screens: {
             'xs': '480px',

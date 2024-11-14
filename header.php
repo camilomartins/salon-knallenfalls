@@ -29,7 +29,7 @@
 	</script>  -->
 </head>
 
-<body <?php body_class('scrollbar-hide h-full md:pl-24 md:pr-24 pl-8 pr-8 md:pt-0 pt-8 md:mt-4 antialiased bg-slate-80 bg-background'); ?>>
+<body <?php body_class('scrollbar-hidemin-h-[100dvh]  md:pl-24 md:pr-24 pl-8 pr-8 md:pt-0 pt-8 md:mt-4 antialiased bg-slate-80 bg-background'); ?>>
 
 <!-- Preloader -->
 <!-- <div class="preloader">

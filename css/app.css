@@ -1020,12 +1020,8 @@ video {
   margin-top: 3px;
 }
 
-.mt-4 {
-  margin-top: 1rem;
-}
-
-.mt-14 {
-  margin-top: 3.5rem;
+.mt-auto {
+  margin-top: auto;
 }
 
 .box-border {
@@ -1234,6 +1230,10 @@ video {
 
 .min-h-\[325px\] {
   min-height: 325px;
+}
+
+.min-h-\[60vh\] {
+  min-height: 60vh;
 }
 
 .min-h-\[auto\] {
@@ -1696,21 +1696,37 @@ video {
           animation: show-up-clock 350ms linear;
 }
 
-@-webkit-keyframes spin {
-  to {
-    transform: rotate(360deg);
+@-webkit-keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }
 
-.animate-spin-slow {
-  -webkit-animation: spin 10s linear infinite;
-          animation: spin 10s linear infinite;
+.animate-infinite-scroll-mobile {
+  -webkit-animation: infinite-scroll 80s ease-in-out infinite;
+          animation: infinite-scroll 80s ease-in-out infinite;
 }
 
 .cursor-default {
@@ -1745,15 +1761,6 @@ video {
 
 .resize {
   resize: both;
-}
-
-.snap-x {
-  -ms-scroll-snap-type: x var(--tw-scroll-snap-strictness);
-      scroll-snap-type: x var(--tw-scroll-snap-strictness);
-}
-
-.snap-center {
-  scroll-snap-align: center;
 }
 
 .list-decimal {
@@ -1856,16 +1863,16 @@ video {
   overflow: visible;
 }
 
-.overflow-x-auto {
-  overflow-x: auto;
-}
-
 .overflow-y-auto {
   overflow-y: auto;
 }
 
 .overflow-x-hidden {
   overflow-x: hidden;
+}
+
+.overflow-x-scroll {
+  overflow-x: scroll;
 }
 
 .scroll-smooth {
@@ -2259,10 +2266,6 @@ video {
   padding: auto;
 }
 
-.p-24 {
-  padding: 6rem;
-}
-
 .\!py-0 {
   padding-top: 0px !important;
   padding-bottom: 0px !important;
@@ -2443,22 +2446,6 @@ video {
 
 .pt-\[0\.37rem\] {
   padding-top: 0.37rem;
-}
-
-.pb-4 {
-  padding-bottom: 1rem;
-}
-
-.pb-20 {
-  padding-bottom: 5rem;
-}
-
-.pt-20 {
-  padding-top: 5rem;
-}
-
-.pt-24 {
-  padding-top: 6rem;
 }
 
 .text-left {
@@ -3115,6 +3102,11 @@ video {
   color: #4b5563;
 }
 
+.paused {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
 .\[direction\:ltr\] {
   direction: ltr;
 }
@@ -3446,6 +3438,16 @@ footer .dashicons{
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
+.scroll-element {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  -webkit-animation: primary 3s linear infinite;
+          animation: primary 3s linear infinite;
+}
+
 .selection\:bg-transparent *::-moz-selection {
   background-color: transparent;
 }
@@ -3477,8 +3479,8 @@ footer .dashicons{
   color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
-.first\:ml-\[20\%\]:first-child {
-  margin-left: 20%;
+.first\:ml-\[3\%\]:first-child {
+  margin-left: 3%;
 }
 
 .last\:mx-0:last-child {
@@ -3559,17 +3561,6 @@ footer .dashicons{
 
 .empty\:hidden:empty {
   display: none;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.hover\:animate-spin-slow:hover {
-  -webkit-animation: spin 10s linear infinite;
-          animation: spin 10s linear infinite;
 }
 
 .hover\:cursor-pointer:hover {
@@ -3681,6 +3672,11 @@ footer .dashicons{
 .hover\:outline-none:hover {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.hover\:paused:hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
 }
 
 .focus\:rounded-\[50\%\]:focus {
@@ -4554,6 +4550,43 @@ footer .dashicons{
     min-width: max-content;
   }
 
+  @-webkit-keyframes infinite-scroll {
+    0% {
+      transform: translateX(0);
+    }
+
+    50% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes infinite-scroll {
+    0% {
+      transform: translateX(0);
+    }
+
+    50% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .md\:animate-infinite-scroll-desktop {
+    -webkit-animation: infinite-scroll 200s ease-in-out infinite;
+            animation: infinite-scroll 200s ease-in-out infinite;
+  }
+
+  .md\:snap-center {
+    scroll-snap-align: center;
+  }
+
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -4635,8 +4668,8 @@ footer .dashicons{
     transition-duration: 150ms;
   }
 
-  .first\:md\:ml-\[30\%\]:first-child {
-    margin-left: 30%;
+  .first\:md\:ml-\[8\%\]:first-child {
+    margin-left: 8%;
   }
 }
 

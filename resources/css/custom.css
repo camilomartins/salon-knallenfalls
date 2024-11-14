@@ -229,3 +229,18 @@ footer .dashicons{
 .outline{
   @apply border-white border-solid ;
 }
+
+.scroll-element {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  animation: primary 3s linear infinite;
+}
+
+@layer utilities {
+  .paused {
+    animation-play-state: paused;
+  }
+}

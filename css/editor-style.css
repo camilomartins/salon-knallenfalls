@@ -451,12 +451,8 @@
   margin-top: 3px
 }
 
-.mt-4 {
-  margin-top: 1rem
-}
-
-.mt-14 {
-  margin-top: 3.5rem
+.mt-auto {
+  margin-top: auto
 }
 
 .box-border {
@@ -665,6 +661,10 @@
 
 .min-h-\[325px\] {
   min-height: 325px
+}
+
+.min-h-\[60vh\] {
+  min-height: 60vh
 }
 
 .min-h-\[auto\] {
@@ -1127,21 +1127,37 @@
           animation: show-up-clock 350ms linear
 }
 
-@-webkit-keyframes spin {
-  to {
-    transform: rotate(360deg)
+@-webkit-keyframes infinite-scroll {
+  0% {
+    transform: translateX(0)
+  }
+
+  50% {
+    transform: translateX(-100%)
+  }
+
+  100% {
+    transform: translateX(0)
   }
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg)
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0)
+  }
+
+  50% {
+    transform: translateX(-100%)
+  }
+
+  100% {
+    transform: translateX(0)
   }
 }
 
-.animate-spin-slow {
-  -webkit-animation: spin 10s linear infinite;
-          animation: spin 10s linear infinite
+.animate-infinite-scroll-mobile {
+  -webkit-animation: infinite-scroll 80s ease-in-out infinite;
+          animation: infinite-scroll 80s ease-in-out infinite
 }
 
 .cursor-default {
@@ -1176,15 +1192,6 @@
 
 .resize {
   resize: both
-}
-
-.snap-x {
-  -ms-scroll-snap-type: x var(--tw-scroll-snap-strictness);
-      scroll-snap-type: x var(--tw-scroll-snap-strictness)
-}
-
-.snap-center {
-  scroll-snap-align: center
 }
 
 .list-decimal {
@@ -1287,16 +1294,16 @@
   overflow: visible
 }
 
-.overflow-x-auto {
-  overflow-x: auto
-}
-
 .overflow-y-auto {
   overflow-y: auto
 }
 
 .overflow-x-hidden {
   overflow-x: hidden
+}
+
+.overflow-x-scroll {
+  overflow-x: scroll
 }
 
 .scroll-smooth {
@@ -1690,10 +1697,6 @@
   padding: auto
 }
 
-.p-24 {
-  padding: 6rem
-}
-
 .\!py-0 {
   padding-top: 0px !important;
   padding-bottom: 0px !important
@@ -1874,22 +1877,6 @@
 
 .pt-\[0\.37rem\] {
   padding-top: 0.37rem
-}
-
-.pb-4 {
-  padding-bottom: 1rem
-}
-
-.pb-20 {
-  padding-bottom: 5rem
-}
-
-.pt-20 {
-  padding-top: 5rem
-}
-
-.pt-24 {
-  padding-top: 6rem
 }
 
 .text-left {
@@ -2621,8 +2608,8 @@ body {
   color: rgb(156 163 175 / var(--tw-text-opacity))
 }
 
-.first\:ml-\[20\%\]:first-child {
-  margin-left: 20%
+.first\:ml-\[3\%\]:first-child {
+  margin-left: 3%
 }
 
 .last\:mx-0:last-child {
@@ -2703,17 +2690,6 @@ body {
 
 .empty\:hidden:empty {
   display: none
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg)
-  }
-}
-
-.hover\:animate-spin-slow:hover {
-  -webkit-animation: spin 10s linear infinite;
-          animation: spin 10s linear infinite
 }
 
 .hover\:cursor-pointer:hover {
@@ -3698,6 +3674,43 @@ body {
     min-width: max-content
   }
 
+  @-webkit-keyframes infinite-scroll {
+    0% {
+      transform: translateX(0)
+    }
+
+    50% {
+      transform: translateX(-100%)
+    }
+
+    100% {
+      transform: translateX(0)
+    }
+  }
+
+  @keyframes infinite-scroll {
+    0% {
+      transform: translateX(0)
+    }
+
+    50% {
+      transform: translateX(-100%)
+    }
+
+    100% {
+      transform: translateX(0)
+    }
+  }
+
+  .md\:animate-infinite-scroll-desktop {
+    -webkit-animation: infinite-scroll 200s ease-in-out infinite;
+            animation: infinite-scroll 200s ease-in-out infinite
+  }
+
+  .md\:snap-center {
+    scroll-snap-align: center
+  }
+
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr))
   }
@@ -3779,8 +3792,8 @@ body {
     transition-duration: 150ms
   }
 
-  .first\:md\:ml-\[30\%\]:first-child {
-    margin-left: 30%
+  .first\:md\:ml-\[8\%\]:first-child {
+    margin-left: 8%
   }
 }
 

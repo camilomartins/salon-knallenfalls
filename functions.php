@@ -521,9 +521,12 @@ function showCarousel($post_type)
       ];
 
       $loop = new WP_Query($args);
-
+	  ?>
+	<div class="flex flex-nowrap hover:paused animate-infinite-scroll-mobile md:animate-infinite-scroll-desktop">
+	  <?php
       while ($loop->have_posts()):$loop->the_post(); ?>
-          <div id="post-<?php the_ID(); ?>" <?php post_class('first:md:ml-[30%] first:ml-[20%] last:mr:mr-[30%] last:mr-[20%] mr-16 md:mr-32 mb-[4rem] snap-center md:mb-44'); ?>>                                  
+	  
+          <div id="post-<?php the_ID(); ?>" <?php post_class('first:md:ml-[8%] first:ml-[3%] last:mr:mr-[30%] last:mr-[20%] mr-16 md:mr-32 mb-[4rem] md:snap-center md:mb-44'); ?>>                                  
 		  	<a class="flex md:flex-nowrap flex-wrap md:bg-transparent  md:transition-opacity hover:opacity-80" href="<?php echo esc_url(
                 	get_permalink()
                 ); ?>"> 				
@@ -573,9 +576,13 @@ function showCarousel($post_type)
 				</div>
                 </a>
             </div>
+			
 		<?php
       endwhile;
       wp_reset_postdata();
+	  ?>
+	  </div>
+	  <?php
 }
 
 /**
