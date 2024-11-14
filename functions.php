@@ -335,9 +335,6 @@ function ww_load_dashicons(){
 add_action('wp_enqueue_scripts', 'ww_load_dashicons');
 
 
-@ini_set( ‘upload_max_size’ , ‘256M’ );
-
-
 /**
  *
  * Function to show Events at "Programm" Page
