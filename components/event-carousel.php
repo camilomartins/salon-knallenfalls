@@ -25,7 +25,7 @@ while ($loop->have_posts()):$loop->the_post(); ?>
                   }
                   
               ?>
-              <div class="z-40 hover:animate-spin-slow font-bold font-serif text-xl w-40 h-40 text-black bg-white flex place-items-center rounded-full absolute -bottom-20 -right-20">
+              <div class="z-40 hover:animate-spin-normal font-bold font-serif text-xl w-40 h-40 text-black bg-white flex place-items-center rounded-full absolute -bottom-20 -right-20">
                   <div class=" aligncenter text-center ">
                       <?php 
                           $unixtimestamp = strtotime( get_field('event-date') );

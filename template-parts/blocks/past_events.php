@@ -46,7 +46,7 @@ $featured_posts = get_field('field_63fa3b625b1a4');
                                             if( $image ) {
                                             echo wp_get_attachment_image( $image, $size );
                                             }
-                                            showCopyright($image);
+                                            
                                         ?>	
                                             <div class="absolute h-full w-full bg-gradient-to-t from-black to-black-100  -bottom-10 opacity-0 group-hover:bottom-0 group-hover:opacity-100 transition-all duration-300">
                                                 <span class="text-2xl font-serif absolute bottom-0 p-4 text-white">

@@ -26,13 +26,12 @@ module.exports = {
         },
         extend: {
             colors: tailpress.colorMapper(tailpress.theme('settings.color.palette', theme)),
-            fontSize: tailpress.fontSizeMapper(tailpress.theme('settings.typography.fontSizes', theme)),
+            fontSize: tailpress.fontSizeMapper(tailpress.theme('settings.typography.fontSizes', theme)),        
             animation: {
-                'spin-slow': 'spin 2s ease-in-out infinite ',
-            },
-            animation: {
+                'spin-slow': 'spin 10s ease-in-out infinite',
+                'spin-normal': 'spin 2s ease-in-out infinite-scroll',
                 'infinite-scroll-mobile': 'infinite-scroll 200s ease-in-out infinite',
-                'infinite-scroll-desktop': 'infinite-scroll 200s ease-in-out infinite',
+                'infinite-scroll-desktop': 'infinite-scroll 300s linear infinite',                
               },
               keyframes: {
                 'infinite-scroll': {

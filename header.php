@@ -46,7 +46,7 @@
 
 <div id="page" class="flex flex-col ">
 	<?php do_action( 'tailpress_header' ); ?>	
-	<header class="lg:bg-transparent z-20	">
+	<header class="z-20 ">
 		<div class="mx-auto flex flex-nowrap items-center ">
 			<div class="justify-between items-center mr-auto">
 				<a class="" href="<?php echo get_home_url(); ?>" alt="Zur Startseite">
