@@ -522,7 +522,7 @@ function showCarousel($post_type)
 
       $loop = new WP_Query($args);
 	  ?>
-	<div id="" class="overflow-visible flex flex-nowrap hover:paused animate-infinite-scroll-mobile md:animate-infinite-scroll-desktop">
+	<div id="scrollingDiv" class="overflow-visible flex flex-nowrap hover:paused animate-infinite-scroll-mobile md:animate-infinite-scroll-desktop">
 	  <?php
       while ($loop->have_posts()):$loop->the_post(); ?>	  
           <div id="post-<?php the_ID(); ?>" <?php post_class('md:first:ml[4%] first:ml-[4%] last:mr:mr-[30%] last:mr-[20%] mr-16 md:mr-32 mb-[4rem] md:snap-center md:mb-44'); ?>>                                  
@@ -580,6 +580,16 @@ function showCarousel($post_type)
       endwhile;
       wp_reset_postdata();
 	  ?>
+	  <script>
+		document.getElementById('scrollingDiv').addEventListener('touchstart', function() {
+		this.style.animation = 'none'; // Stop the animation
+		
+		// Re-enable the animation after 1 second
+		setTimeout(() => {
+			this.style.animation = ''; // Remove the inline style to re-enable CSS animation
+		}, 2000);
+		});
+	  </script>
 	  
 	  </div>
 	  
@@ -647,7 +657,7 @@ function newsletter_popup(){
 					</p>	
 					<div class="grid gap grid-cols-2">
 						<div>
-							<input class="bg-red bg-gray-200 px-2 w-64 h-10" type="text" id="email" name="email" required placeholder="hallo@salonknallenfalls.de">
+							<input class="bg-red bg-gray-200 px-2 w-auto h-10" type="text" id="email" name="email" required placeholder="hallo@salonknallenfalls.de">
 						</div>
 						<div>
 							<button class="text-base font-serif font-bold h-10 px-6 hover:border-1 bg-black text-white hover:text-black hover:bg-white hover:border-black" type="submit">Abschicken</button>
