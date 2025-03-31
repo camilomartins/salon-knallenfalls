@@ -351,7 +351,7 @@ function showEvents($post_type)
       $args = [
       	'post_type' => "event",
       	'post_status' => 'publish',
-      	'posts_per_page' => 30,
+      	'posts_per_page' => 50,
 		'meta_key'          => 'event-date',                
 		'meta_value'   => date( "Ymd" ), // change to how "event date" is stored
 		'meta_compare' => '>=',            
@@ -421,7 +421,7 @@ function showEvents($post_type)
 
 /**
  *
- * Function to show Events at "Programm" Page
+ * Function to show News at "News" Page
  *
  */
 
