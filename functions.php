@@ -203,6 +203,16 @@ function setup_footer_menu()
 			'menu-item-status' => 'publish',
 		]);
 		wp_update_nav_menu_item($menu_id, 0, [
+			'menu-item-title' => __('Instagram', 'salonknallenfalls'),
+			'menu-item-url' => "https://www.instagram.com/salonknallenfalls/",
+			'menu-item-status' => 'publish',
+		]);
+		wp_update_nav_menu_item($menu_id, 0, [
+			'menu-item-title' => __('Facebook', 'salonknallenfalls'),
+			'menu-item-url' => "https://www.facebook.com/salonknallenfalls/",
+			'menu-item-status' => 'publish',
+		]);
+		wp_update_nav_menu_item($menu_id, 0, [
 			'menu-item-title' => __('Datenschutz', 'salonknallenfalls'),
 			'menu-item-url' => home_url('/datenschutzerklaerung/'),
 			'menu-item-status' => 'publish',
@@ -211,7 +221,7 @@ function setup_footer_menu()
 			'menu-item-title' => __('Impressum', 'salonknallenfalls'),
 			'menu-item-url' => home_url('/impressum/'),
 			'menu-item-status' => 'publish',
-		]);
+		]);				
 		$locations = get_theme_mod('nav_menu_locations');
 		$locations['secondary'] = $menu_id;
 		set_theme_mod('nav_menu_locations', $locations);
@@ -235,22 +245,22 @@ function get_custom_post_type_template($page_template)
 	$prefix = 'Salon Knallenfalls – ';
 	if ($title == 'News') {
 		$post_states[] = $prefix . 'News';
-		$page_template = get_stylesheet_directory() . '/pages/page-news.php';
+		$page_template = get_stylesheet_directory().'/pages/page-news.php';
 	} elseif ($title == 'Programm') {
 		$post_states[] = $prefix . 'Programm';
-		$page_template = get_stylesheet_directory() . '/pages/page-programm.php';
+		$page_template = get_stylesheet_directory().'/pages/page-programm.php';
 	} elseif ($title == 'Über uns') {
 		$post_states[] = $prefix . 'Über uns';
-		$page_template = get_stylesheet_directory() . '/pages/page-ueber-uns.php';
+		$page_template = get_stylesheet_directory().'/pages/page-ueber-uns.php';
 	} elseif ($title == 'Presse') {
 		$post_states[] = $prefix . 'Presse';
-		$page_template = get_stylesheet_directory() . '/pages/page-presse.php';
+		$page_template = get_stylesheet_directory().'/pages/page-presse.php';
 	} elseif ($title == 'Newsletter') {
 		$post_states[] = $prefix . 'Newsletter';
-		$page_template = get_stylesheet_directory() . '/pages/page-newsletter.php';
+		$page_template = get_stylesheet_directory().'/pages/page-newsletter.php';
 	} elseif ($title == 'Neuigkeiten') {
 		$post_states[] = $prefix . 'Neuigkeiten';
-		$page_template = get_stylesheet_directory() . '/pages/page-news-posts.php';
+		$page_template = get_stylesheet_directory().'/pages/page-news-posts.php';
 	} 
 
 	if (doing_filter('page_template') && !empty($page_template)) {
@@ -522,14 +532,14 @@ function showCarousel($post_type)
 
       $loop = new WP_Query($args);
 	  ?>
-	<div id="scrollingDiv" class="overflow-visible flex flex-nowrap hover:paused animate-infinite-scroll-mobile md:animate-infinite-scroll-desktop">
+	<div id="scrollingDiv" class="h-fit overflow-visible flex flex-nowrap hover:paused md:animate-infinite-scroll-desktop animate-infinite-scroll-mobile ">
 	  <?php
       while ($loop->have_posts()):$loop->the_post(); ?>	  
-          <div id="post-<?php the_ID(); ?>" <?php post_class('md:first:ml[4%] first:ml-[4%] last:mr:mr-[30%] last:mr-[20%] mr-16 md:mr-32 mb-[4rem] md:snap-center md:mb-44'); ?>>                                  
-		  	<a class="flex md:flex-nowrap flex-wrap md:bg-transparent  md:transition-opacity hover:opacity-80" href="<?php echo esc_url(
+          <div id="post-<?php the_ID(); ?>" class=" md:first:ml[4%] first:ml-[4%] last:mr:mr-[30%] last:mr-[20%] mr-16 md:mr-32 md:snap-center ">                                  
+		  	<a class="flex md:flex-nowrap flex-wrap md:bg-transparent md:transition-opacity hover:opacity-80" href="<?php echo esc_url(
                 	get_permalink()
                 ); ?>"> 				
-				<div class="relative md:min-w-max w-64">
+				<div class="relative lg:min-w-max md:w-80 w-64">
 					<?php  
 						$image = get_field('event-image');												
 						$size = 'square_s'; // (thumbnail, medium, large, full or custom size)						
@@ -568,9 +578,7 @@ function showCarousel($post_type)
 								$description = get_field('event-description'); 
 								echo substr($description, 0 , 230)." ...";
 							?>
-						</p>
-						<br>						
-						<button>Mehr erfahren</button>
+						</p>						
 					</div> 
 				</div>
                 </a>
@@ -582,7 +590,14 @@ function showCarousel($post_type)
 	  ?>
 	  <script>
 		document.getElementById('scrollingDiv').addEventListener('touchstart', function() {
-		this.style.animation = 'none'; // Stop the animation
+			// Wenn das Ende des Scrollbereichs erreicht ist, zurück zum Anfang scrollen
+            if (scrollableDiv.scrollTop >= scrollableDiv.scrollHeight - scrollableDiv.clientHeight) {
+                scrollableDiv.scrollTop = 0; // Zurück zum Anfang
+            } else {
+                // Scrollen um 2px nach unten
+                scrollableDiv.scrollTop += 2;
+            }
+		// this.style.animation = 'none'; // Stop the animation
 		
 		// Re-enable the animation after 1 second
 		setTimeout(() => {
@@ -621,7 +636,7 @@ function showCopyright($image){
 	$fotograf = get_post_field( 'post_excerpt', $image );	
 	echo "<p class='mt-2 text-xs font-normal text-neutral-500 !important'>"					;
 	if($fotograf == ""){							
-		echo "© Julian Dell";
+		echo "© Salonknallenfalls";
 	}else{							
 		echo "© ".$fotograf;
 	}
@@ -631,7 +646,7 @@ function showCopyright($image){
 
 
 /**
- * Calendar Download Button
+ * Newsletter Popup
  *
  *
  * @param array $post Post ID
@@ -649,25 +664,59 @@ function newsletter_popup(){
 				<div class="flex font-serif font-bold justify-between">
 					<span class=" mb-3 text-xl md:text-2xl">Newsletter abonnieren</span>		
 					<span class=" text-right close cursor-pointer hover:text-slate-400 text-xl md:text-2xl "> X</span>
-				</div>																					
+				</div>		
+				<div id="thank-you-message" class="hidden">
+			Vielen Dank für Ihre Anmeldung!
+			Sie erhalten in Kürze eine Bestätigung per E-Mail.
+		</div>																			
 
-				<form action="https://app.loops.so/api/newsletter-form/cm3irxhbr004uwp14325ynq4v" method="post" class="space-y-4">            		
-					<p>
-						Melde dich für unseren Newsletter an und verpasse keine Veranstaltungen!	
-					</p>	
-					<div class="grid gap grid-cols-2">
-						<div>
-							<input class="bg-red bg-gray-200 px-2 w-auto h-10" type="text" id="email" name="email" required placeholder="hallo@salonknallenfalls.de">
-						</div>
-						<div>
-							<button class="text-base font-serif font-bold h-10 px-6 hover:border-1 bg-black text-white hover:text-black hover:bg-white hover:border-black" type="submit">Abschicken</button>
-						</div>
-				</div>
-					<div class="flex">
-						<input class="accent-black block mr-4" type="checkbox" id="terms" name="terms" required>
-						<label class="" for="terms">Ich akzeptiere die <a href="<?php echo home_url()."/datenschutzerklaerung"; ?>" class="terms-link" target="_blank">Datenschutzbestimmungen</a></label>
-					</div>
-        		</form>																					
+				<form id="newsletter-form" class="space-y-4">            		
+	<p>
+		Melde dich für unseren Newsletter an und verpasse keine Veranstaltungen!
+		
+	</p>
+	<div class="grid gap grid-cols-2">
+		<div>
+			<input class="bg-gray-200 px-2 w-full h-10" type="text" id="email" name="email" required placeholder="hallo@salonknallenfalls.de">
+		</div>
+		<div>
+			<button class="text-base font-serif font-bold h-10 px-6 hover:border-1 bg-black text-white hover:text-black hover:bg-white hover:border-black" type="submit">Abschicken</button>
+		</div>
+	</div>
+	<div class="flex">
+		<input class="accent-black block mr-4" type="checkbox" id="terms" name="terms" required>
+		<label class="" for="terms">Ich akzeptiere die <a href="/datenschutzerklaerung" class="terms-link" target="_blank">Datenschutzbestimmungen</a></label>
+	</div>
+</form>
+
+<!-- Container für die Dankesnachricht -->
+
+
+<script>
+document.getElementById('newsletter-form').addEventListener('submit', function(event) {
+	event.preventDefault(); // Verhindert das Standardverhalten (Seitenwechsel)
+
+	// Formulardaten erfassen
+	const formData = new FormData(event.target);
+
+	// Daten per fetch senden
+	fetch('https://app.loops.so/api/newsletter-form/cm3irxhbr004uwp14325ynq4v', {
+		method: 'POST',
+		body: formData,
+	})
+	.then(response => {
+		document.getElementById('newsletter-form').style.display = 'none';
+		document.getElementById('thank-you-message').classList.remove('hidden');
+		setTimeout(function() {
+			var date = new Date();
+              // Cookie wird eine Stunde lang gültig sein
+              date.setTime(date.getTime() + (1 * 60 * 60 * 1000));
+              document.cookie = "popup_closed=1; expires=" + date.toUTCString() + "; path=/";
+    	document.getElementById("popup").style.display = "none";
+		}, 5000); // 5000 Millisekunden = 5 Sekunden
+	})
+});
+</script>
 			</div>				
 		</div>
 		<div >

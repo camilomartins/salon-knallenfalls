@@ -3,6 +3,7 @@
 /**
  *
  * Template Name: Startseite
+ * Template Post Type: page
  *
  */
       get_header(); 

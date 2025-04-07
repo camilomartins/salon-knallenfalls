@@ -1,52 +1,44 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html class="" <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width">
-	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	
-	<?php 
-	// wp_enqueue_script("jquery");
-	wp_head(); ?>
-
-	<!-- <script type="text/javascript">
-		// makes sure the whole site is loaded
-		jQuery(window).load(function () {
-			"use strict";
-			// will first fade out the loading animation
-			if(  jQuery( '.et-bfb' ).length <= 0 && jQuery( '.et-fb' ).length <= 0  ){ 
-				jQuery(".status").fadeOut();
-				// will fade out the whole DIV that covers the website.
-				jQuery(".preloader").delay(1000).fadeOut("slow");
-			}else{
-				jQuery(".preloader").css('display','none');
-			}
-		}); 
-	</script>  -->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">	
+	<style>
+		@font-face {
+			font-family: 'Courier Prime';
+			src: url('/fonts/Courier_Prime/CourierPrime-Regular.ttf') format('truetype'),
+				url('/fonts/Courier_Prime/CourierPrime-Regular.woff2') format('woff2');
+			font-weight: normal;
+			font-style: normal;
+		}	
+		@font-face {
+			font-family: 'Courier Prime';
+			src: url('/fonts/Courier_Prime/CourierPrime-Bold.ttf') format('truetype'),
+				url('/fonts/Courier_Prime/CourierPrime-Bold.woff2') format('woff2');
+			font-weight: bold;
+			font-style: normal;
+		}
+	</style>
+	
+	<?php 	
+	wp_head(); ?>	
+	<!-- <meta name="viewport" content="width=device-width"> -->
 </head>
 
-<body <?php body_class('scrollbar-hidemin-h-[100dvh]  md:pl-24 md:pr-24 pl-8 pr-8 md:pt-0 pt-8 md:mt-4 antialiased bg-slate-80 bg-background'); ?>>
-
-<!-- Preloader -->
-<!-- <div class="preloader">
-<div class="status rotating"></div>
-</div> -->
+<body class="w-screen scrollbar-hide md:pl-24 md:pr-24 pl-8 pr-8 md:pt-0 pt-8 md:mt-4 antialiased bg-slate-80 bg-background">
 
 <?php 
-	do_action( 'tailpress_site_before' ); 
-	
+	do_action( 'tailpress_site_before' ); 	
 	// Echo Current Page Template
 	// echo "<script>console.log('Template".get_page_template(). "' );</script>";
 	// echo "<script>console.log('".get_home_url(). "' );</script>";
 ?>
 
-<div id="page" class="flex flex-col ">
+<div id="page" class="flex flex-col">
 	<?php do_action( 'tailpress_header' ); ?>	
-	<header class="z-20 ">
+	<header class="z-20">
 		<div class="mx-auto flex flex-nowrap items-center ">
 			<div class="justify-between items-center mr-auto">
 				<a class="" href="<?php echo get_home_url(); ?>" alt="Zur Startseite">
@@ -61,16 +53,13 @@
 					'container_class' => 'md:text-2xl ml-4 md:mr-0 lg:mt-0 lg:p-0 lg:bg-transparent lg:block',
 					'menu_class'      => 'flex text-base ',
 					'theme_location'  => 'primary',
-					'li_class'        => 'whitespace-nowrap md:mr-8 md:text-2xl font-serif text-primary font-thin  lg:mb-0 mr-4 last:mx-0 hover:underline hover:underline-offset-4',
+					'li_class'        => 'whitespace-nowrap md:mr-8 md:text-2xl font-serif text-primary font-thin lg:mb-0 mr-4 last:mx-0 hover:underline hover:underline-offset-4',
 					'fallback_cb'     => false,
 				)
 			);
 			?>
-		</div>
-		
+		</div>		
 	</header>
-
-	<div id="content" class="mt-10 w-auto site-content flex-grow text-dark container  flex-col mx-auto">
-			
+	<div id="content" class="site-content flex-grow text-dark container p-0 flex-col mx-auto">			
 		<?php do_action( 'tailpress_content_start' ); ?>
 		

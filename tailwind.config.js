@@ -2,6 +2,8 @@ const _ = require("lodash");
 const theme = require('./theme.json');
 const tailpress = require("@jeffreyvr/tailwindcss-tailpress");
 
+
+
 module.exports = {
     content: [
         './*/*.php',
@@ -30,8 +32,8 @@ module.exports = {
             animation: {
                 'spin-slow': 'spin 10s ease-in-out infinite',
                 'spin-normal': 'spin 2s ease-in-out infinite-scroll',
-                'infinite-scroll-mobile': 'infinite-scroll 200s ease-in-out infinite',
-                'infinite-scroll-desktop': 'infinite-scroll 300s linear infinite',                
+                'infinite-scroll-mobile': 'infinite-scroll 200s linear infinite',
+                'infinite-scroll-desktop': 'infinite-scroll 400s linear infinite',                
               },
               keyframes: {
                 'infinite-scroll': {
@@ -56,7 +58,7 @@ module.exports = {
             'display': ['Courier Prime'],
             'body': ['"Open Sans"'],
         }
-
+        
     },
     plugins: [
         tailpress.tailwind,

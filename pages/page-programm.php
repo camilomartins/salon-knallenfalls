@@ -27,7 +27,6 @@ get_header(); ?>
   /**
    * Veranstaltungen im Salon Knallenfalls
    */
-  // showCarousel('event');
   showEvents("event");
   ?>
   
