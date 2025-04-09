@@ -4,7 +4,7 @@
 
 	<?php do_action('tailpress_content_after'); ?>
 	<?php newsletter_popup(); ?>                    
-	<footer id="colophon" class="bg-black w-full inline-block fixed left-0 md:pl-24 md:pr-24 pl-8 pr-8 bottom-0 pb-4 font-serif text-slate-50" role="contentinfo">
+	<footer id="colophon" class="pt-4 bg-black w-full inline-block fixed left-0 md:pl-24 md:pr-24 pl-8 pr-8 bottom-0 pb-4 font-serif text-slate-50" role="contentinfo">
 		<?php do_action('tailpress_footer'); ?>			
 		<?php
 			$locations = get_nav_menu_locations();

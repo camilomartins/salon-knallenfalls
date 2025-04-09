@@ -2,32 +2,45 @@
 <html class="" <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">	
 	<style>
 		@font-face {
 			font-family: 'Courier Prime';
-			src: url('/fonts/Courier_Prime/CourierPrime-Regular.ttf') format('truetype'),
-				url('/fonts/Courier_Prime/CourierPrime-Regular.woff2') format('woff2');
+			src: url('<?php echo get_template_directory_uri(); ?>/fonts/Courier_Prime/CourierPrime-Regular.ttf') format('truetype');
 			font-weight: normal;
 			font-style: normal;
+			font-display: swap;
 		}	
 		@font-face {
 			font-family: 'Courier Prime';
-			src: url('/fonts/Courier_Prime/CourierPrime-Bold.ttf') format('truetype'),
-				url('/fonts/Courier_Prime/CourierPrime-Bold.woff2') format('woff2');
+			src: url('<?php echo get_template_directory_uri(); ?>/fonts/Courier_Prime/CourierPrime-Bold.ttf') format('truetype');
 			font-weight: bold;
 			font-style: normal;
+			font-display: swap;
+		}
+		@font-face {
+			font-family: 'Courier Prime';
+			src: url('<?php echo get_template_directory_uri(); ?>/fonts/Courier_Prime/CourierPrime-Italic.ttf') format('truetype');
+			font-weight: normal;
+			font-style: italic;
+			font-display: swap;
+		}
+		@font-face {
+			font-family: 'Courier Prime';
+			src: url('<?php echo get_template_directory_uri(); ?>/fonts/Courier_Prime/CourierPrime-BoldItalic.ttf') format('truetype');
+			font-weight: bold;
+			font-style: italic;
+			font-display: swap;
 		}
 	</style>
 	
-	<?php 	
-	wp_head(); ?>	
-	<!-- <meta name="viewport" content="width=device-width"> -->
+	<?php wp_head(); ?>		
 </head>
 
-<body class="w-screen scrollbar-hide md:pl-24 md:pr-24 pl-8 pr-8 md:pt-0 pt-8 md:mt-4 antialiased bg-slate-80 bg-background">
+<body class="md:w-screen scrollbar-hide md:pl-24 md:pr-24 pl-8 pr-8 md:pt-0 pt-8 md:mt-4 antialiased bg-slate-80 bg-background">
 
 <?php 
 	do_action( 'tailpress_site_before' ); 	
@@ -62,4 +75,4 @@
 	</header>
 	<div id="content" class="site-content flex-grow text-dark container p-0 flex-col mx-auto">			
 		<?php do_action( 'tailpress_content_start' ); ?>
-		
+

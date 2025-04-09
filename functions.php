@@ -675,12 +675,12 @@ function newsletter_popup(){
 		Melde dich für unseren Newsletter an und verpasse keine Veranstaltungen!
 		
 	</p>
-	<div class="grid gap grid-cols-2">
-		<div>
-			<input class="bg-gray-200 px-2 w-full h-10" type="text" id="email" name="email" required placeholder="hallo@salonknallenfalls.de">
+	<div class="grid grid-cols-3 w-full">
+		<div class="col-span-2">
+			<input class="bg-gray-200 px-2 h-10 w-full" type="text" id="email" name="email" required placeholder="hallo@salonknallenfalls.de">
 		</div>
-		<div>
-			<button class="text-base font-serif font-bold h-10 px-6 hover:border-1 bg-black text-white hover:text-black hover:bg-white hover:border-black" type="submit">Abschicken</button>
+		<div class="col-span-1 ">
+			<button class="w-full text-base font-serif font-bold h-10 px-6 hover:border-1 bg-black text-white hover:text-black hover:bg-white hover:border-black" type="submit">Abschicken</button>
 		</div>
 	</div>
 	<div class="flex">

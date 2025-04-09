@@ -10,7 +10,7 @@
 get_header(); ?>
 
 <main class="max-w-screen-lg mx-auto " role="main">    
-    <div class="bg-red-500">
+    <div class="">
             <?php if ('' !== get_post()->post_content) { ?>            
                 <div>
                     <?php if (is_search() || (!is_singular() && 'summary' === get_theme_mod('blog_content', 'full'))) {
