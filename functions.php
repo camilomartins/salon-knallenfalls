@@ -549,7 +549,7 @@ function showCarousel($post_type)
 						}	
 						showCopyright($image);						
 					?>
-					<div class="p-4 z-40 hover:animate-spin-normal font-bold font-serif text-base md:text-xl md:w-40 md:h-40 w-28 h-28  text-black bg-white flex place-items-center rounded-full absolute md:-bottom-20 md:-right-20 -bottom-14 -right-14">
+					<div class="p-4 z-40 hover:animate-spin-normal font-bold font-serif text-sm md:text-xl md:w-40 md:h-40 w-28 h-28  text-black bg-white flex place-items-center rounded-full absolute md:-bottom-20 md:-right-20 -bottom-14 -right-14">
 						<div class=" aligncenter text-center ">
 							<?php 
 								$unixtimestamp = strtotime( get_field('event-date') );
@@ -562,7 +562,7 @@ function showCarousel($post_type)
 				</div>	                  				  
 				<div class="mt-12 md:w-[36rem] p-6 md:pl-16 md:pt-6 text-primary place-items-center flex">
 					<div>
-						<h2 class="font-serif bold text-primary entry-title text-xl md:text-2xl font-extrabold leading-tight mb-4">
+						<h2 class="font-serif bold text-primary entry-title text-base md:text-2xl font-extrabold leading-tight mb-4">
 							<?php the_title(); ?>
 						</h2>  
 						<!-- <p>

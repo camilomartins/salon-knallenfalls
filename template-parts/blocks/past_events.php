@@ -13,8 +13,8 @@
 $featured_posts = get_field('field_63fa3b625b1a4');
 ?>
 <section class="mb-10 bg-black text-primary">
-    <h1 class="font-serif  text-2xl font-bold mb-4">Letzte Veranstaltungen</h1>    
-    <div class="flex flex-wrap">
+    <h1 class="font-serif text-lg md:text-2xl font-bold mb-4">Letzte Veranstaltungen</h1>    
+    <div class="flex flex-wrap justify-center gap-2">
         
         <?php
             $today = getdate();
@@ -32,35 +32,31 @@ $featured_posts = get_field('field_63fa3b625b1a4');
             $loop = new WP_Query($args);
             if($loop->have_posts()){
                 while ($loop->have_posts()):$loop->the_post(); ?>
-                    <div id="post-<?php the_ID(); ?>" <?php post_class('mb-4 mr-4'); ?>>
-                            <a class="md:bg-transparent  md:transition-opacity hover:opacity-80" href="<?php echo esc_url(
+                    <div id="post-<?php the_ID(); ?>" class="m-2" <?php post_class(''); ?>>
+                            <a class="md:bg-transparent md:transition-opacity hover:opacity-80 block" href="<?php echo esc_url(
                                 get_permalink()
                             ); ?>">                             
-                            <div class="post text-primary">    
-                                <div class="flex flex-wrap bg-black">    
-                                    <div class="w-56 h-56 group bg-slate-300">
-                                        <div class="relative overflow-hidden bg-slate-300">
-                                        <?php  
-                                            $image = get_field('event-image', get_the_ID());
-                                            $size = 'square_s'; // (thumbnail, medium, large, full or custom size)
-                                            if( $image ) {
-                                            echo wp_get_attachment_image( $image, $size );
-                                            }
-                                            
-                                        ?>	
-                                            <div class="absolute h-full w-full bg-gradient-to-t from-black to-black-100  -bottom-10 opacity-0 group-hover:bottom-0 group-hover:opacity-100 transition-all duration-300">
-                                                <span class="text-2xl font-serif absolute bottom-0 p-4 text-white">
-                                                <?php 
-                                                    the_field("event-date", get_the_ID());
-                                                    echo("<br>");
-                                                    the_title();                                         
-                                                ?>
-                                                </span>                    
-                                            </div>
-                                        </div>
+                            <div class="grow w-32 h-32 md:w-56 md:h-56 group bg-slate-300">
+                                <div class="relative overflow-hidden bg-slate-300 h-full">
+                                <?php  
+                                    $image = get_field('event-image', get_the_ID());
+                                    $size = 'square_s'; // (thumbnail, medium, large, full or custom size)
+                                    if( $image ) {
+                                    echo wp_get_attachment_image( $image, $size );
+                                    }
+                                    
+                                ?>	
+                                    <div class="absolute h-full w-full bg-gradient-to-t from-black to-black-100 -bottom-10 opacity-0 group-hover:bottom-0 group-hover:opacity-100 transition-all duration-300">
+                                        <span class="text-xs md:text-2xl font-serif absolute bottom-0 p-4 text-white">
+                                        <?php 
+                                            the_field("event-date", get_the_ID());
+                                            echo("<br>");
+                                            the_title();                                         
+                                        ?>
+                                        </span>                    
                                     </div>
                                 </div>
-                            </div>                  
+                            </div>                
                             </a>
                         </div>
                     <?php

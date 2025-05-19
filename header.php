@@ -49,7 +49,7 @@
 	// echo "<script>console.log('".get_home_url(). "' );</script>";
 ?>
 
-<div id="page" class="flex flex-col">
+<div id="page" class="flex flex-col ">
 	<?php do_action( 'tailpress_header' ); ?>	
 	<header class="z-20">
 		<div class="mx-auto flex flex-nowrap items-center ">

@@ -32,20 +32,20 @@ $featured_posts = get_field('field_63fa3b625b1a4');
                     $image = get_field('field_63ed14761fbc0', $featured_post->ID);
                     $size = 'square_s'; // (thumbnail, medium, large, full or custom size)
                     ?>
-                    <div class="image md:w-56 w-1/2 ">
+                    <div class="image md:w-56 w-1/2">
                         <?php if( $image ) {
                             echo wp_get_attachment_image( $image, $size );
                         }
                         ?>
                     </div>                                    
                     <div class="description ml-6  md:w-56 w-1/2">            
-                        <h1 class="font-serif  text-xl font-light leading-tight  mb-4">
+                        <h1 class="font-serif text-base md:text-xl font-light leading-tight  mb-4">
                             <?php echo ($title); ?>
                         </h1>
-                        <span class="font-light"> 
+                        <span class="font-light text-base"> 
                             <?php echo esc_html( $seats ); ?> Plätze
                         <br>
-                        <br>
+                        
                         <?php echo esc_html( $adress ); ?></span>
                     </div>
                 </div>

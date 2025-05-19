@@ -8,8 +8,6 @@
  */
 
 get_header(); ?>
-
-<!-- <main class="max-w-screen-lg mx-auto my-12 py-48" role="main" data-track-content>         -->
   <?php
   if ('' !== get_post()->post_content) { ?>
     <div class="gutenberg-content">
@@ -29,10 +27,6 @@ get_header(); ?>
    */
   showEvents("event");
   ?>
-  
-
-
-</main><!-- #site-content -->
                 
 <?php get_footer(); ?>
 
