@@ -567,6 +567,25 @@ if( function_exists('acf_add_local_field_group') ):
                 'allow_null' => 0,
                 'ui' => 1,
             ),
+            array(
+                'key' => 'field_65ab1234sold01',
+                'label' => 'Ausverkauft',
+                'name' => 'event-sold-out',
+                'aria-label' => '',
+                'type' => 'true_false',
+                'instructions' => 'Veranstaltung als ausverkauft markieren.',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => 0,
+                'ui' => 1,
+                'ui_on_text' => 'Ja',
+                'ui_off_text' => 'Nein',
+            ),
         ),
         'location' => array(
             array(

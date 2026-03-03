@@ -51,8 +51,35 @@
 									<?php echo esc_html( $venue->post_title ); ?>
 							<?php endif; ?>								
 							</p>
-						<button class="w-full mt-10 mb-4 btn btn-white">
-							<a href="<?php the_field("event-ticket"); ?>"><span class="dashicons dashicons-tickets-alt"></span>  Ticket kaufen</button></a> 		
+						<style>
+						.ticket-btn, .ticket-btn-sold {
+							position: relative;
+							padding-left: 24px;
+							padding-right: 24px;
+						}
+						.ticket-btn {
+							background: radial-gradient(circle at 0% 50%, var(--ticket-bg, black) 8px, transparent 8.5px) left center / 12px 100% no-repeat,
+							            radial-gradient(circle at 100% 50%, var(--ticket-bg, black) 8px, transparent 8.5px) right center / 12px 100% no-repeat,
+							            linear-gradient(white, white);
+						}
+						.ticket-btn:hover { opacity: 0.85; }
+						.ticket-btn-sold {
+							background: radial-gradient(circle at 0% 50%, var(--ticket-bg, black) 8px, transparent 8.5px) left center / 12px 100% no-repeat,
+							            radial-gradient(circle at 100% 50%, var(--ticket-bg, black) 8px, transparent 8.5px) right center / 12px 100% no-repeat,
+							            linear-gradient(#d1d5db, #d1d5db);
+						}
+						</style>
+						<?php if (get_field('event-sold-out')) : ?>
+						<button class="ticket-btn-sold w-full mt-10 mb-4 py-3 font-serif font-bold text-gray-500 cursor-not-allowed" disabled>
+							Ausverkauft
+						</button>
+						<?php else : ?>
+						<a href="<?php the_field("event-ticket"); ?>" class="block">
+							<div class="ticket-btn w-full mt-10 mb-4 py-3 font-serif font-bold text-black text-center transition-opacity">
+								<span class="dashicons dashicons-tickets-alt"></span>  Ticket kaufen
+							</div>
+						</a>
+						<?php endif; ?> 		
 						<!-- <button class="mb-10 w-full btn-black btn "><span class="dashicons dashicons-calendar"></span>  Kalendereintrag</a></button> 			 -->
                   
 						<p class=" text-lg font-light leading-snug"> 

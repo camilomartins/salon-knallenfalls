@@ -9,9 +9,9 @@
 
 get_header(); ?>
 
-<!-- <main class="max-w-screen-lg mx-auto my-12 py-48" role="main" data-track-content>         -->
+<main class="max-w-screen-lg mx-auto my-12 overflow-x-hidden" role="main" data-track-content>        
   <?php if ('' !== get_post()->post_content) { ?>
-    <div class="gutenberg-content">
+    <div class="gutenberg-content mb-40">
       <?php
         if (
                 is_search() ||
@@ -28,9 +28,6 @@ get_header(); ?>
   <?php } 
 
     ?>
-
-    
-
 
 </main><!-- #site-content -->
                 

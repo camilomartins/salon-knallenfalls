@@ -2,7 +2,7 @@
 
 /**
  *
- * Template Name: Presse
+ * Template Name: Newsletter
  * Template Post Type: page
  *
  */
