@@ -120,6 +120,10 @@
   left: -15px
 }
 
+.-right-10 {
+  right: -2.5rem
+}
+
 .-right-14 {
   right: -3.5rem
 }
@@ -248,6 +252,14 @@
   z-index: 999
 }
 
+.z-\[60\] {
+  z-index: 60
+}
+
+.z-\[55\] {
+  z-index: 55
+}
+
 .col-span-1 {
   grid-column: span 1 / span 1
 }
@@ -270,10 +282,6 @@
 
 .m-8 {
   margin: 2rem
-}
-
-.m-2 {
-  margin: 0.5rem
 }
 
 .\!my-0 {
@@ -435,6 +443,18 @@
   margin-right: auto
 }
 
+.mt-0 {
+  margin-top: 0px
+}
+
+.mt-0\.5 {
+  margin-top: 0.125rem
+}
+
+.mt-1 {
+  margin-top: 0.25rem
+}
+
 .mt-10 {
   margin-top: 2.5rem
 }
@@ -459,24 +479,12 @@
   margin-top: 6rem
 }
 
-.mt-\[3px\] {
-  margin-top: 3px
-}
-
-.mt-0 {
-  margin-top: 0px
-}
-
-.mt-0\.5 {
-  margin-top: 0.125rem
-}
-
-.mt-1 {
-  margin-top: 0.25rem
-}
-
 .mt-3 {
   margin-top: 0.75rem
+}
+
+.mt-\[3px\] {
+  margin-top: 3px
 }
 
 .box-border {
@@ -497,10 +505,6 @@
 
 .inline-block {
   display: inline-block
-}
-
-.\!inline-block {
-  display: inline-block !important
 }
 
 .inline {
@@ -557,6 +561,10 @@
 
 .h-2\/5 {
   height: 40%
+}
+
+.h-20 {
+  height: 5rem
 }
 
 .h-24 {
@@ -685,10 +693,6 @@
   height: 100vh
 }
 
-.h-20 {
-  height: 5rem
-}
-
 .max-h-\[calc\(100\%-64px\)\] {
   max-height: calc(100% - 64px)
 }
@@ -747,6 +751,10 @@
 
 .w-2\/5 {
   width: 40%
+}
+
+.w-20 {
+  width: 5rem
 }
 
 .w-24 {
@@ -869,18 +877,6 @@
   width: 100vw
 }
 
-.w-\[120px\] {
-  width: 120px
-}
-
-.w-20 {
-  width: 5rem
-}
-
-.w-\[80px\] {
-  width: 80px
-}
-
 .min-w-0 {
   min-width: 0px
 }
@@ -905,10 +901,6 @@
   min-width: -webkit-max-content;
   min-width: -moz-max-content;
   min-width: max-content
-}
-
-.min-w-\[180px\] {
-  min-width: 180px
 }
 
 .max-w-\[200px\] {
@@ -947,12 +939,12 @@
   max-width: 24rem
 }
 
-.flex-auto {
-  flex: 1 1 auto
-}
-
 .flex-1 {
   flex: 1 1 0%
+}
+
+.flex-auto {
+  flex: 1 1 auto
 }
 
 .flex-shrink-0 {
@@ -1251,12 +1243,12 @@
   cursor: default
 }
 
-.cursor-pointer {
-  cursor: pointer
-}
-
 .cursor-not-allowed {
   cursor: not-allowed
+}
+
+.cursor-pointer {
+  cursor: pointer
 }
 
 .touch-none {
@@ -1311,6 +1303,10 @@
   grid-template-columns: repeat(3, minmax(0, 1fr))
 }
 
+.grid-cols-\[1fr_auto\] {
+  grid-template-columns: 1fr auto
+}
+
 .\!flex-row {
   flex-direction: row !important
 }
@@ -1337,6 +1333,10 @@
 
 .items-start {
   align-items: flex-start
+}
+
+.items-end {
+  align-items: flex-end
 }
 
 .items-center {
@@ -1367,16 +1367,12 @@
   justify-items: center
 }
 
-.gap-4 {
-  gap: 1rem
-}
-
-.gap-3 {
-  gap: 0.75rem
-}
-
 .gap-2 {
   gap: 0.5rem
+}
+
+.gap-4 {
+  gap: 1rem
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
@@ -1575,6 +1571,11 @@
   border-color: rgb(209 213 219 / var(--tw-border-opacity))
 }
 
+.border-gray-700 {
+  --tw-border-opacity: 1;
+  border-color: rgb(55 65 81 / var(--tw-border-opacity))
+}
+
 .border-neutral-100 {
   --tw-border-opacity: 1;
   border-color: rgb(245 245 245 / var(--tw-border-opacity))
@@ -1602,11 +1603,6 @@
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity))
-}
-
-.border-gray-700 {
-  --tw-border-opacity: 1;
-  border-color: rgb(55 65 81 / var(--tw-border-opacity))
 }
 
 .border-t-transparent {
@@ -1816,18 +1812,6 @@
   padding: auto
 }
 
-.\!p-2 {
-  padding: 0.5rem !important
-}
-
-.\!p-1 {
-  padding: 0.25rem !important
-}
-
-.\!p-1\.5 {
-  padding: 0.375rem !important
-}
-
 .\!py-0 {
   padding-top: 0px !important;
   padding-bottom: 0px !important
@@ -1903,9 +1887,24 @@
   padding-bottom: 0.5rem
 }
 
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem
+}
+
 .py-48 {
   padding-top: 12rem;
   padding-bottom: 12rem
+}
+
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem
 }
 
 .py-\[0\.32rem\] {
@@ -1936,21 +1935,6 @@
 .py-\[5px\] {
   padding-top: 5px;
   padding-bottom: 5px
-}
-
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem
-}
-
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem
-}
-
-.py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem
 }
 
 .pb-0 {
@@ -2023,6 +2007,10 @@
 
 .pt-\[0\.37rem\] {
   padding-top: 0.37rem
+}
+
+.pb-24 {
+  padding-bottom: 6rem
 }
 
 .text-left {
@@ -2138,16 +2126,6 @@
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem
-}
-
-.\!text-sm {
-  font-size: 0.875rem !important;
-  line-height: 1.25rem !important
-}
-
-.\!text-xs {
-  font-size: 0.75rem !important;
-  line-height: 1rem !important
 }
 
 .font-bold {
@@ -2349,6 +2327,11 @@
   color: rgb(209 213 219 / var(--tw-text-opacity))
 }
 
+.text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity))
+}
+
 .text-gray-50 {
   --tw-text-opacity: 1;
   color: rgb(249 250 251 / var(--tw-text-opacity))
@@ -2407,11 +2390,6 @@
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity))
-}
-
-.text-gray-400 {
-  --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity))
 }
 
 .underline {
@@ -3053,14 +3031,14 @@ body {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)
 }
 
-.focus\:ring-sky-500:focus {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(14 165 233 / var(--tw-ring-opacity))
-}
-
 .focus\:ring-black:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(0 0 0 / var(--tw-ring-opacity))
+}
+
+.focus\:ring-sky-500:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(14 165 233 / var(--tw-ring-opacity))
 }
 
 .focus\:placeholder\:opacity-100:focus::-moz-placeholder {
@@ -3735,6 +3713,10 @@ body {
 }
 
 @media (min-width: 782px) {
+  .md\:fixed {
+    position: fixed
+  }
+
   .md\:-bottom-20 {
     bottom: -5rem
   }
@@ -3743,13 +3725,16 @@ body {
     right: -5rem
   }
 
-  .md\:float-right {
-    float: right
+  .md\:order-1 {
+    order: 1
   }
 
-  .md\:mx-0 {
-    margin-left: 0px;
-    margin-right: 0px
+  .md\:order-2 {
+    order: 2
+  }
+
+  .md\:float-right {
+    float: right
   }
 
   .md\:my-6 {
@@ -3763,6 +3748,10 @@ body {
 
   .md\:mb-64 {
     margin-bottom: 16rem
+  }
+
+  .md\:mb-8 {
+    margin-bottom: 2rem
   }
 
   .md\:ml-24 {
@@ -3797,10 +3786,6 @@ body {
     margin-top: 15rem
   }
 
-  .md\:mb-8 {
-    margin-bottom: 2rem
-  }
-
   .md\:block {
     display: block
   }
@@ -3829,12 +3814,8 @@ body {
     height: auto
   }
 
-  .md\:h-20 {
-    height: 5rem
-  }
-
-  .md\:h-32 {
-    height: 8rem
+  .md\:max-h-40 {
+    max-height: 10rem
   }
 
   .md\:w-1\/2 {
@@ -3875,18 +3856,6 @@ body {
 
   .md\:w-screen {
     width: 100vw
-  }
-
-  .md\:w-20 {
-    width: 5rem
-  }
-
-  .md\:w-32 {
-    width: 8rem
-  }
-
-  .md\:w-\[120px\] {
-    width: 120px
   }
 
   .md\:flex-1 {
@@ -3934,6 +3903,10 @@ body {
     scroll-snap-align: center
   }
 
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+  }
+
   .md\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr))
   }
@@ -3954,18 +3927,16 @@ body {
     justify-items: start
   }
 
-  .md\:gap-6 {
-    gap: 1.5rem
-  }
-
   .md\:gap-4 {
     gap: 1rem
   }
 
-  .md\:truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap
+  .md\:gap-6 {
+    gap: 1.5rem
+  }
+
+  .md\:overflow-hidden {
+    overflow: hidden
   }
 
   .md\:bg-transparent {
@@ -4035,6 +4006,10 @@ body {
     padding-top: 1.5rem
   }
 
+  .md\:pb-32 {
+    padding-bottom: 8rem
+  }
+
   .md\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem
@@ -4045,18 +4020,18 @@ body {
     line-height: 2.25rem
   }
 
-  .md\:text-xl {
-    font-size: 1.25rem
-  }
-
-  .md\:\!text-sm {
-    font-size: 0.875rem !important;
-    line-height: 1.25rem !important
+  .md\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem
   }
 
   .md\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem
   }
 
   .md\:transition-opacity {
@@ -4067,6 +4042,14 @@ body {
 }
 
 @media (min-width: 960px) {
+  .lg\:order-1 {
+    order: 1
+  }
+
+  .lg\:order-2 {
+    order: 2
+  }
+
   .lg\:-mx-4 {
     margin-left: -1rem;
     margin-right: -1rem
@@ -4097,6 +4080,18 @@ body {
     min-width: -webkit-max-content;
     min-width: -moz-max-content;
     min-width: max-content
+  }
+
+  .lg\:flex-row {
+    flex-direction: row
+  }
+
+  .lg\:items-center {
+    align-items: center
+  }
+
+  .lg\:gap-6 {
+    gap: 1.5rem
   }
 
   .lg\:bg-transparent {

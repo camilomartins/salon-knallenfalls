@@ -8,7 +8,7 @@
  */
       get_header(); 
 ?>
-<div id="carousel" class="min-h-[60vh] scroll-smooth ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] mt-12 md:mt-24 flex items-center overflow-x-scroll scrollbar-hide">
+<div id="carousel" class="relative z-[55] min-h-[60vh] scroll-smooth ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] mt-12 md:mt-24 pb-24 md:pb-32 flex items-center justify-center overflow-x-scroll scrollbar-hide">
       <?php 
             showCarousel("event");      
       ?>      

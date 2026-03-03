@@ -532,10 +532,10 @@ function showCarousel($post_type)
 
       $loop = new WP_Query($args);
 	  ?>
-	<div id="scrollingDiv" class="h-fit overflow-visible flex flex-nowrap hover:paused md:animate-infinite-scroll-desktop animate-infinite-scroll-mobile ">
+	<div id="scrollingDiv" class="h-fit overflow-visible flex flex-nowrap justify-center hover:paused md:animate-infinite-scroll-desktop animate-infinite-scroll-mobile ">
 	  <?php
       while ($loop->have_posts()):$loop->the_post(); ?>	  
-          <div id="post-<?php the_ID(); ?>" class=" md:first:ml[4%] first:ml-[4%] last:mr:mr-[30%] last:mr-[20%] mr-16 md:mr-32 md:snap-center ">                                  
+          <div id="post-<?php the_ID(); ?>" class="flex-shrink-0 md:first:ml[4%] first:ml-[4%] last:mr:mr-[30%] last:mr-[20%] mr-16 md:mr-32 md:snap-center ">                                  
 		  	<a class="flex md:flex-nowrap flex-wrap md:bg-transparent md:transition-opacity hover:opacity-80" href="<?php echo esc_url(
                 	get_permalink()
                 ); ?>"> 				
@@ -549,7 +549,7 @@ function showCarousel($post_type)
 						}	
 						showCopyright($image);						
 					?>
-					<div class="p-4 z-40 hover:animate-spin-normal font-bold font-serif text-sm md:text-xl md:w-40 md:h-40 w-28 h-28  text-black bg-white flex place-items-center rounded-full absolute md:-bottom-20 md:-right-20 -bottom-14 -right-14">
+					<div class="p-4 z-[55] hover:animate-spin-normal font-bold font-serif text-sm md:text-xl md:w-40 md:h-40 w-28 h-28  text-black bg-white flex place-items-center rounded-full absolute md:-bottom-20 md:-right-20 -bottom-14 -right-14">
 						<div class=" aligncenter text-center ">
 							<?php 
 								$unixtimestamp = strtotime( get_field('event-date') );
@@ -658,7 +658,7 @@ function newsletter_popup(){
 	if (!isset($_COOKIE['popup_closed'])) {
 	// Div-Element mit dem Popup-Inhalt ausgeben
 	?>
-	<div id="popup" tabindex="-1" class="fixed bottom-0  left-0 z-50 w-screen bg-white h-modal ">
+	<div id="popup" tabindex="-1" class="fixed bottom-0  left-0 z-[60] w-screen bg-white h-modal ">
 		<div class="  text-black relative w-full h-full md:h-auto pt-6 pl-8  md:pr-[20%] md:pl-[20%] items-center place-items-center">
 			<div class="mb-4 text-sm font-light pr-8">
 				<div class="flex font-serif font-bold justify-between">
@@ -675,12 +675,12 @@ function newsletter_popup(){
 		Melde dich für unseren Newsletter an und verpasse keine Veranstaltungen!
 		
 	</p>
-	<div class="grid grid-cols-3 w-full">
-		<div class="col-span-2">
+	<div class="grid grid-cols-[1fr_auto] w-full">
+		<div>
 			<input class="bg-gray-200 px-2 h-10 w-full" type="text" id="email" name="email" required placeholder="hallo@salonknallenfalls.de">
 		</div>
-		<div class="col-span-1 ">
-			<button class="w-full text-base font-serif font-bold h-10 px-6 hover:border-1 bg-black text-white hover:text-black hover:bg-white hover:border-black" type="submit">Abschicken</button>
+		<div>
+			<button class="w-full whitespace-nowrap text-base font-serif font-bold h-10 px-6 hover:border-1 bg-black text-white hover:text-black hover:bg-white hover:border-black" type="submit">Abschicken</button>
 		</div>
 	</div>
 	<div class="flex">
@@ -696,15 +696,22 @@ function newsletter_popup(){
 document.getElementById('newsletter-form').addEventListener('submit', function(event) {
 	event.preventDefault(); // Verhindert das Standardverhalten (Seitenwechsel)
 
-	// Formulardaten erfassen
-	const formData = new FormData(event.target);
+	// Nur die E-Mail-Adresse erfassen (ohne terms checkbox)
+	const email = document.getElementById('email').value;
+	const body = new URLSearchParams({ email: email });
 
-	// Daten per fetch senden
+	// Daten per fetch senden (application/x-www-form-urlencoded)
 	fetch('https://app.loops.so/api/newsletter-form/cm3irxhbr004uwp14325ynq4v', {
 		method: 'POST',
-		body: formData,
+		body: body,
 	})
 	.then(response => {
+		if (!response.ok) {
+			throw new Error('Netzwerkfehler: ' + response.status);
+		}
+		return response.json();
+	})
+	.then(data => {
 		document.getElementById('newsletter-form').style.display = 'none';
 		document.getElementById('thank-you-message').classList.remove('hidden');
 		setTimeout(function() {
@@ -714,6 +721,9 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
               document.cookie = "popup_closed=1; expires=" + date.toUTCString() + "; path=/";
     	document.getElementById("popup").style.display = "none";
 		}, 5000); // 5000 Millisekunden = 5 Sekunden
+	})
+	.catch(error => {
+		console.error('Newsletter-Fehler:', error);
 	})
 });
 </script>

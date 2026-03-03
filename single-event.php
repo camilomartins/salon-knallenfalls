@@ -23,8 +23,8 @@
 								?>
 							</div>
 						
-							<div class="p-4 drop-shadow-2xl z-40 hover:animate-spin-normal font-bold font-serif text-base md:text-xl md:w-40 md:h-40 w-28 h-28  text-black bg-white flex place-items-center rounded-full absolute md:-bottom-20 md:-right-20 -bottom-14 -right-14">
-								<div class="text-base md:text-2xl w-full h-full text-center flex place-items-center">
+							<div class="p-2 md:p-4 drop-shadow-2xl z-40 hover:animate-spin-normal font-bold font-serif text-xs md:text-xl md:w-40 md:h-40 w-20 h-20  text-black bg-white flex place-items-center rounded-full absolute md:-bottom-20 md:-right-20 -bottom-10 -right-10">
+								<div class="text-xs md:text-2xl w-full h-full text-center flex place-items-center">
 									<div>
 									<?php 
 										$unixtimestamp = strtotime( get_field('event-date') );
@@ -82,7 +82,7 @@
 						<?php endif; ?> 		
 						<!-- <button class="mb-10 w-full btn-black btn "><span class="dashicons dashicons-calendar"></span>  Kalendereintrag</a></button> 			 -->
                   
-						<p class=" text-lg font-light leading-snug"> 
+						<p class="text-base md:text-lg font-normal leading-snug"> 
 							<?php 
 								the_field('event-description');								
 							?>

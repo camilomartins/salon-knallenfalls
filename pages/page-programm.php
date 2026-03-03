@@ -98,6 +98,41 @@ if ($loop->have_posts()) {
         <?php endif; ?>
     </div>
 
+    <style>
+        .program-ticket-btn, .program-ticket-sold {
+            position: relative;
+            padding-left: 24px;
+            padding-right: 24px;
+            white-space: nowrap;
+        }
+        .program-ticket-btn {
+            background: white;
+            color: black;
+            transition: all 0.2s ease;
+        }
+        .program-ticket-btn:hover {
+            background: transparent !important;
+            border: 2px solid white !important;
+            color: white !important;
+        }
+        .program-ticket-sold {
+            background: #d1d5db;
+            color: #555;
+        }
+        .event-title-clamp {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .event-desc-clamp {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+
     <?php
     while ($loop->have_posts()) : $loop->the_post();
         $raw_date = get_post_meta(get_the_ID(), 'event-date', true);
@@ -135,12 +170,12 @@ if ($loop->have_posts()) {
                     </div>
 
                     <!-- Artist + Info -->
-                    <div class="flex-1 min-w-0">
-                        <h2 class="font-serif font-extrabold text-primary text-base md:text-2xl leading-tight line-clamp-2 md:truncate">
+                    <div class="flex-1 min-w-0 md:max-h-40 md:overflow-hidden">
+                        <h2 class="font-serif font-extrabold text-primary text-base md:text-2xl leading-tight event-title-clamp">
                             <?php the_title(); ?>
                         </h2>
                         <?php if ($description) : ?>
-                            <p class="hidden md:block text-sm text-gray-400 font-normal mt-0.5 line-clamp-2"><?php echo esc_html(wp_trim_words($description, 12, '…')); ?></p>
+                            <p class="hidden lg:block text-sm text-gray-400 font-normal mt-0.5 event-desc-clamp"><?php echo esc_html(wp_trim_words($description, 12, '…')); ?></p>
                         <?php endif; ?>
                         <p class="md:hidden text-xs text-gray-400 font-normal mt-1">
                             <?php echo esc_html($formatted_date); ?><?php if ($event_time) echo ' · ' . esc_html($event_time); ?>
@@ -154,29 +189,29 @@ if ($loop->have_posts()) {
                 <!-- Ticket on mobile (full width below image + title) -->
                 <div class="md:hidden mt-3">
                     <?php if ($is_sold_out) : ?>
-                        <span class="btn btn-white opacity-50 cursor-not-allowed !p-2 !text-sm !block text-center" style="background: radial-gradient(circle at 0% 50%, black 6px, transparent 6.5px) left center / 9px 100% no-repeat, radial-gradient(circle at 100% 50%, black 6px, transparent 6.5px) right center / 9px 100% no-repeat, linear-gradient(#d1d5db, #d1d5db); color: #555; border: none;">Ausverkauft</span>
+                        <span class="program-ticket-sold block py-2 text-sm font-serif font-bold text-center cursor-not-allowed">Ausverkauft</span>
                     <?php else : ?>
-                        <span class="btn btn-white !p-2 !text-sm !block text-center" style="background: radial-gradient(circle at 0% 50%, black 6px, transparent 6.5px) left center / 9px 100% no-repeat, radial-gradient(circle at 100% 50%, black 6px, transparent 6.5px) right center / 9px 100% no-repeat, linear-gradient(white, white); border: none;"><span class="dashicons dashicons-tickets-alt"></span> Tickets</span>
+                        <span class="program-ticket-btn block py-2 text-sm font-serif font-bold text-center"><span class="dashicons dashicons-tickets-alt"></span> Tickets</span>
                     <?php endif; ?>
                 </div>
 
-                <!-- Date + Venue (desktop) -->
-                <div class="hidden md:block text-right flex-shrink-0 min-w-[180px]">
-                    <p class="text-primary text-base font-medium">
-                        <?php echo esc_html($formatted_date); ?><?php if ($event_time) echo ' · ' . esc_html($event_time); ?>
-                    </p>
-                    <?php if ($venue_name) : ?>
-                        <p class="text-sm text-gray-400 font-normal mt-0.5"><?php echo esc_html($venue_name); ?></p>
-                    <?php endif; ?>
-                </div>
-
-                <!-- Ticket (desktop) -->
-                <div class="hidden md:flex items-center flex-shrink-0">
-                    <?php if ($is_sold_out) : ?>
-                        <span class="btn btn-white opacity-50 cursor-not-allowed !p-2 !text-sm w-[120px] text-center" style="background: radial-gradient(circle at 0% 50%, black 6px, transparent 6.5px) left center / 9px 100% no-repeat, radial-gradient(circle at 100% 50%, black 6px, transparent 6.5px) right center / 9px 100% no-repeat, linear-gradient(#d1d5db, #d1d5db); color: #555; border: none;">Ausverkauft</span>
-                    <?php else : ?>
-                        <span class="btn btn-white !p-2 !text-sm w-[120px] text-center" style="background: radial-gradient(circle at 0% 50%, black 6px, transparent 6.5px) left center / 9px 100% no-repeat, radial-gradient(circle at 100% 50%, black 6px, transparent 6.5px) right center / 9px 100% no-repeat, linear-gradient(white, white); border: none;"><span class="dashicons dashicons-tickets-alt"></span> Tickets</span>
-                    <?php endif; ?>
+                <!-- Ticket + Date (desktop, stacked on md, row on lg) -->
+                <div class="hidden md:flex flex-col lg:flex-row items-end lg:items-center flex-shrink-0 gap-2 lg:gap-6">
+                    <div class="text-right md:order-2 lg:order-1">
+                        <p class="text-primary text-sm font-medium">
+                            <?php echo esc_html($formatted_date); ?><?php if ($event_time) echo ' · ' . esc_html($event_time); ?>
+                        </p>
+                        <?php if ($venue_name) : ?>
+                            <p class="text-xs text-gray-400 font-normal mt-0.5"><?php echo esc_html($venue_name); ?></p>
+                        <?php endif; ?>
+                    </div>
+                    <div class="md:order-1 lg:order-2">
+                        <?php if ($is_sold_out) : ?>
+                            <span class="program-ticket-sold py-2 inline-block text-sm font-serif font-bold text-center cursor-not-allowed">Ausverkauft</span>
+                        <?php else : ?>
+                            <span class="program-ticket-btn py-2 inline-block text-sm font-serif font-bold text-center"><span class="dashicons dashicons-tickets-alt"></span> Tickets</span>
+                        <?php endif; ?>
+                    </div>
                 </div>
 
             </a>
