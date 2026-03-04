@@ -10,7 +10,6 @@
 ?>
 
 <?php
-// --- News Posts with Year & Spielstätte Filters ---
 $args = [
     'post_type'      => 'post',
     'post_status'    => 'publish',
@@ -18,56 +17,16 @@ $args = [
     'order'          => 'DESC',
 ];
 $loop = new WP_Query($args);
-
-// Collect unique years and locations for filter options
-$years = [];
-$locations = [];
-if ($loop->have_posts()) {
-    foreach ($loop->posts as $p) {
-        $year = get_the_date('Y', $p->ID);
-        if ($year) {
-            $years[$year] = $year;
-        }
-        $venue = get_field('event-location', $p->ID);
-        if ($venue && isset($venue->post_title)) {
-            $locations[$venue->ID] = $venue->post_title;
-        }
-    }
-    krsort($years);
-    asort($locations);
-}
 ?>
 
 <div id="veranstaltungen" class="mt-12 md:mt-24 mx-auto container max-w-screen-lg">
 
     <?php if ($loop->have_posts()) : ?>
-    <!-- Filters -->
-    <div class="grid grid-cols-2 md:flex md:flex-wrap gap-2 md:gap-4 mb-6 md:mb-8">
-        <select id="filter-year" class="bg-transparent text-white text-sm md:text-base font-serif px-2 py-1 md:px-4 md:py-2 flex-1 md:flex-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-black">
-            <option value="">Jahre</option>
-            <?php foreach ($years as $y) : ?>
-                <option value="<?php echo esc_attr($y); ?>"><?php echo esc_html($y); ?></option>
-            <?php endforeach; ?>
-        </select>
-        <?php if (!empty($locations)) : ?>
-        <select id="filter-location" class="bg-transparent text-white text-sm md:text-base font-serif px-2 py-1 md:px-4 md:py-2 flex-1 md:flex-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-black">
-            <option value="">Spielstätten</option>
-            <?php foreach ($locations as $loc) : ?>
-                <option value="<?php echo esc_attr($loc); ?>"><?php echo esc_html($loc); ?></option>
-            <?php endforeach; ?>
-        </select>
-        <?php endif; ?>
-    </div>
 
     <?php
     while ($loop->have_posts()) : $loop->the_post();
-        $post_year = get_the_date('Y');
-        $venue = get_field('event-location');
-        $venue_name = ($venue && isset($venue->post_title)) ? $venue->post_title : '';
     ?>
-        <div id="post-<?php the_ID(); ?>" <?php post_class('mb-24 news-post-card'); ?>
-             data-year="<?php echo esc_attr($post_year); ?>"
-             data-location="<?php echo esc_attr($venue_name); ?>">
+        <div id="post-<?php the_ID(); ?>" <?php post_class('mb-24'); ?>>
                <a class="flex flex-wrap md:bg-transparent md:transition-opacity hover:opacity-80" href="<?php echo esc_url(
                    get_permalink()
                ); ?>"> 
@@ -120,44 +79,6 @@ if ($loop->have_posts()) {
      endwhile;
      wp_reset_postdata();
      ?>
-
-    <div id="no-results-message" class="hidden text-center py-8 text-gray-400 font-serif">
-        Keine Beiträge gefunden.
-    </div>
-
-    <script>
-    (function() {
-        var yearSelect = document.getElementById('filter-year');
-        var locationSelect = document.getElementById('filter-location');
-        var cards = document.querySelectorAll('.news-post-card');
-        var noResults = document.getElementById('no-results-message');
-
-        function filterPosts() {
-            var selectedYear = yearSelect ? yearSelect.value : '';
-            var selectedLocation = locationSelect ? locationSelect.value : '';
-            var visibleCount = 0;
-
-            cards.forEach(function(card) {
-                var matchYear = !selectedYear || card.getAttribute('data-year') === selectedYear;
-                var matchLocation = !selectedLocation || card.getAttribute('data-location') === selectedLocation;
-
-                if (matchYear && matchLocation) {
-                    card.style.display = '';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            if (noResults) {
-                noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-            }
-        }
-
-        if (yearSelect) yearSelect.addEventListener('change', filterPosts);
-        if (locationSelect) locationSelect.addEventListener('change', filterPosts);
-    })();
-    </script>
 
     <?php else : ?>
         <p class="text-gray-400">Keine Beiträge vorhanden.</p>
