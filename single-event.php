@@ -9,7 +9,7 @@
 <?php get_header(); ?>
 
 <div class="" id="post-<?php the_ID(); ?>" > <?php// post_class(); ?>
-	<div class="relative    md:px-12 container shrink mx-auto">
+	<div class="relative md:mt-12 md:px-12 container shrink mx-auto">
 		<div id="post-<?php the_ID(); ?>" <?php post_class('mb-24 flex flex-wrap md:flex-nowrap'); ?>> 
 				<div class=" md:w-1/2 ">                                      
 						<div class="relative">

@@ -31,10 +31,8 @@ add_action('after_setup_theme', 'tailpress_setup');
  */
 function tailpress_enqueue_scripts()
 {
-	$theme = wp_get_theme();
-
-	wp_enqueue_style('tailpress', tailpress_asset('css/app.css'), [], $theme->get('Version'));
-	wp_enqueue_script('tailpress', tailpress_asset('js/app.js'), [], $theme->get('Version'));
+	wp_enqueue_style('tailpress', tailpress_asset('css/app.css'), [], tailpress_asset_version('css/app.css'));
+	wp_enqueue_script('tailpress', tailpress_asset('js/app.js'), [], tailpress_asset_version('js/app.js'));
 }
 
 add_action('wp_enqueue_scripts', 'tailpress_enqueue_scripts');
@@ -42,17 +40,70 @@ add_action('wp_enqueue_scripts', 'tailpress_enqueue_scripts');
 /**
  * Get asset path.
  *
- * @param string  $path Path to asset.
+ * If mix-manifest.json exists (Laravel Mix), returns the versioned URI
+ * with the content hash in the filename. Otherwise returns the plain URI.
  *
- * @return string
+ * @param string $path Relative path to asset (e.g. 'css/app.css').
+ * @return string      Full URI to the asset.
  */
 function tailpress_asset($path)
 {
-	if (wp_get_environment_type() === 'production') {
-		return get_stylesheet_directory_uri() . '/' . $path;
+	$manifest_path = get_stylesheet_directory() . '/mix-manifest.json';
+
+	if (file_exists($manifest_path)) {
+		$manifest = json_decode(file_get_contents($manifest_path), true);
+		$key = '/' . $path;
+
+		if (isset($manifest[$key])) {
+			// Mix manifest values look like "/css/app.css?id=abc123"
+			return get_stylesheet_directory_uri() . $manifest[$key];
+		}
 	}
 
-	return add_query_arg('time', time(), get_stylesheet_directory_uri() . '/' . $path);
+	return get_stylesheet_directory_uri() . '/' . $path;
+}
+
+/**
+ * Get asset version string for cache busting.
+ *
+ * Priority:
+ *   1. mix-manifest.json hash (cleanest, set by Laravel Mix on each build)
+ *   2. filemtime() of the compiled file (changes on every recompile)
+ *   3. Theme version from style.css (static fallback)
+ *
+ * @param string $path Relative path to asset (e.g. 'css/app.css').
+ * @return string      Version string.
+ */
+function tailpress_asset_version($path)
+{
+	// 1. Try mix-manifest.json hash
+	$manifest_path = get_stylesheet_directory() . '/mix-manifest.json';
+
+	if (file_exists($manifest_path)) {
+		$manifest = json_decode(file_get_contents($manifest_path), true);
+		$key = '/' . $path;
+
+		if (isset($manifest[$key])) {
+			// Extract the ?id=xxx hash from the manifest value
+			$query = parse_url($manifest[$key], PHP_URL_QUERY);
+			if ($query) {
+				parse_str($query, $params);
+				if (isset($params['id'])) {
+					return $params['id'];
+				}
+			}
+		}
+	}
+
+	// 2. Fallback: file modification time (updates on every recompile)
+	$file_path = get_stylesheet_directory() . '/' . $path;
+
+	if (file_exists($file_path)) {
+		return (string) filemtime($file_path);
+	}
+
+	// 3. Last resort: theme version
+	return wp_get_theme()->get('Version');
 }
 
 /**
@@ -287,8 +338,9 @@ function create_pages()
 		2 => ['title' => __('Über uns', 'salonknallenfalls'), 'slug' => 'ueber-uns',],
 		3 => ['title' => __('Presse', 'salonknallenfalls'), 'slug' => 'Presse'],
 		4 => ['title' => __('Impressum', 'salonknallenfalls'),'slug' => 'impressum',],
-		5 => ['title' => __('Newsletter', 'salonknallenfalls'),'slug' => 'impressum',],
+		5 => ['title' => __('Newsletter', 'salonknallenfalls'),'slug' => 'newsletter',],
 		6 => ['title' => __('Neuigkeiten', 'salonknallenfalls'),'slug' => 'neuigkeiten',],
+		7 => ['title' => __('Datenschutzerklärung', 'salonknallenfalls'),'slug' => 'datenschutzerklaerung',],
 	];
 
 	for ($i = 0; $i < count($pages); $i++) {
@@ -677,7 +729,7 @@ function newsletter_popup(){
 	</p>
 	<div class="grid grid-cols-[1fr_auto] w-full">
 		<div>
-			<input class="bg-gray-200 px-2 h-10 w-full" type="text" id="email" name="email" required placeholder="hallo@salonknallenfalls.de">
+			<input class="bg-gray-200 px-2 h-10 w-full text-black" type="text" id="email" name="email" required placeholder="hallo@salonknallenfalls.de">
 		</div>
 		<div>
 			<button class="w-full whitespace-nowrap text-base font-serif font-bold h-10 px-6 hover:border-1 bg-black text-white hover:text-black hover:bg-white hover:border-black" type="submit">Abschicken</button>

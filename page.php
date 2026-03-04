@@ -1,22 +1,16 @@
 <?php get_header(); ?>
 
-<main class="container max-w-screen-lg mx-auto my-12 py-48" role="main" data-track-content>
-
 <!-- PAGE TEMPLATE -->
 
-	<?php if ( have_posts() ) : ?>
-		<?php
-		while ( have_posts() ) :
-			the_post();
-			?>
-
-			<?php get_template_part( 'template-parts/content', get_post_format() ); ?>
-
-		<?php endwhile; ?>
-
-	<?php endif; ?>
-
-		</main>
-
-<?php
-get_footer();
+    <?php if ('' !== get_post()->post_content) { ?>            
+        <div class="mt-20 mb-24 md:mb-32 max-w-screen-lg mx-auto">
+            <?php if (is_search() || (!is_singular() && 'summary' === get_theme_mod('blog_content', 'full'))) {
+                the_excerpt();
+            } else {
+                the_content(__('Continue reading', 'twentytwenty'));
+            } ?>
+        </div>
+        
+    <?php } ?>
+              
+<?php get_footer(); ?>

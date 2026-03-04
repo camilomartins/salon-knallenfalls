@@ -3790,6 +3790,18 @@ body {
     margin-top: 15rem
   }
 
+  .md\:mb-32 {
+    margin-bottom: 8rem
+  }
+
+  .md\:mt-20 {
+    margin-top: 5rem
+  }
+
+  .md\:mt-12 {
+    margin-top: 3rem
+  }
+
   .md\:block {
     display: block
   }

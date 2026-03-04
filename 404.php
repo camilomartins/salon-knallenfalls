@@ -1,28 +1,21 @@
-<!DOCTYPE html>
-<html <?php language_attributes(); ?> class="no-js">
-<head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width">
-	<link rel="profile" href="http://gmpg.org/xfn/11">
+<?php
 
-	<?php wp_head(); 
-	get_header();
-	?>
-</head>
-<body class="antialiased">
-	<div class="md:flex min-h-screen">
-		<div class="w-full md:w-1/2 flex items-center justify-center">
-			<div class="max-w-sm m-8">
-				<div class="text-5xl md:text-15xl text-gray-800 border-primary border-b">404</div>
-				<div class="w-16 h-1 bg-purple-light my-3 md:my-6"></div>
-				<p class="text-gray-800 text-2xl md:text-3xl font-light mb-8"><?php _e( 'Entschuldige, das konnten wir leider nicht finden.', 'tailpress' ); ?></p>
-				<a href="<?php echo get_bloginfo( 'url' ); ?>" class="bg-primary px-4 py-2 rounded text-white">
-					<?php _e( 'Zurück zur Startseite', 'salonknallenfalls' ); ?>
-				</a>
-			</div>
-		</div>
+/**
+ * The template for displaying 404 pages (not found)
+ */
+
+get_header(); ?>
+
+<div class="mt-20 max-w-screen-lg mx-auto min-h-[60vh] flex items-center">
+	<div class="w-full">
+		<h1 class="font-serif font-extrabold text-primary text-xl md:text-2xl mb-4">404</h1>
+		<p class="text-base md:text-lg font-normal text-primary mb-8">
+			<?php _e( 'Entschuldige, das konnten wir leider nicht finden.', 'salonknallenfalls' ); ?>
+		</p>
+		<a href="<?php echo get_bloginfo( 'url' ); ?>" class="btn btn-black inline-block">
+			<?php _e( 'Zurück zur Startseite', 'salonknallenfalls' ); ?>
+		</a>
 	</div>
-</body>
-</html>
+</div>
 
 <?php get_footer(); ?>
