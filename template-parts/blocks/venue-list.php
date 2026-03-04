@@ -17,7 +17,7 @@
 $featured_posts = get_field('field_63fa3b625b1a4');
 ?>
 <section class="mb-10 bg-black text-primary">
-    <h1 class="font-serif  text-2xl font-bold mb-4">Spielstätten</h1>    
+    <h1 class="font-serif  text-xl md:text-2xl font-bold mb-4">Spielstätten</h1>    
     <?php
     if( $featured_posts ): ?>
     <div class="post "> 
@@ -39,10 +39,10 @@ $featured_posts = get_field('field_63fa3b625b1a4');
                         ?>
                     </div>                                    
                     <div class="description ml-6  md:w-56 w-1/2">            
-                        <h1 class="font-serif text-base md:text-xl font-light leading-tight  mb-4">
+                        <h1 class="font-serif text-base md:text-xl font-extrabold leading-tight  mb-4">
                             <?php echo ($title); ?>
                         </h1>
-                        <span class="font-light text-base"> 
+                        <span class="font-normal text-base"> 
                             <?php echo esc_html( $seats ); ?> Plätze
                         <br>
                         
@@ -64,10 +64,10 @@ $featured_posts = get_field('field_63fa3b625b1a4');
                             
                 </div>                                    
                 <div class="description ml-6  w-56">            
-                    <h1 class="font-serif  text-xl font-light leading-tight  mb-4">
+                    <h1 class="font-serif  text-xl font-extrabold leading-tight  mb-4">
                         Beispielevent
                     </h1>
-                    <span class="font-light"> 
+                    <span class="font-normal"> 
                         100 Plätze
                     <br>
                     <br>

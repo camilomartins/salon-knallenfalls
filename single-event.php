@@ -23,8 +23,8 @@
 								?>
 							</div>
 						
-							<div class="p-2 md:p-4 drop-shadow-2xl z-40 hover:animate-spin-normal font-bold font-serif text-xs md:text-xl md:w-40 md:h-40 w-20 h-20  text-black bg-white flex place-items-center rounded-full absolute md:-bottom-20 md:-right-20 -bottom-10 -right-10">
-								<div class="text-xs md:text-2xl w-full h-full text-center flex place-items-center">
+							<div class="p-2 md:p-4 drop-shadow-2xl z-40 hover:animate-spin-normal font-bold font-serif text-sm md:text-xl md:w-40 md:h-40 w-20 h-20  text-black bg-white flex place-items-center rounded-full absolute md:-bottom-20 md:-right-20 -bottom-10 -right-10">
+								<div class="text-sm md:text-xl w-full h-full text-center flex place-items-center">
 									<div>
 									<?php 
 										$unixtimestamp = strtotime( get_field('event-date') );

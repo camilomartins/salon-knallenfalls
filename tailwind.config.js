@@ -32,7 +32,7 @@ module.exports = {
             animation: {
                 'spin-slow': 'spin 10s ease-in-out infinite',
                 'spin-normal': 'spin 2s ease-in-out infinite-scroll',
-                'infinite-scroll-mobile': 'infinite-scroll 200s linear infinite',
+                'infinite-scroll-mobile': 'infinite-scroll 400s ease-in 2s infinite',
                 'infinite-scroll-desktop': 'infinite-scroll 400s linear infinite',                
               },
               keyframes: {

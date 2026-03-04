@@ -13,7 +13,7 @@
 $featured_posts = get_field('field_63fa3b625b1a4');
 ?>
 <section class="mb-10 bg-black text-primary">
-    <h1 class="font-serif text-lg md:text-2xl font-bold mb-4">Letzte Veranstaltungen</h1>    
+    <h1 class="font-serif text-xl md:text-2xl font-bold mb-4">Letzte Veranstaltungen</h1>    
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 justify-items-center md:justify-items-start">
         
         <?php
@@ -47,7 +47,7 @@ $featured_posts = get_field('field_63fa3b625b1a4');
                                     
                                 ?>	
                                     <div class="absolute h-full w-full bg-gradient-to-t from-black to-black-100 -bottom-10 opacity-0 group-hover:bottom-0 group-hover:opacity-100 transition-all duration-300">
-                                        <span class="text-xs md:text-2xl font-serif absolute bottom-0 p-4 text-white">
+                                        <span class="text-sm md:text-xl font-serif absolute bottom-0 p-4 text-white">
                                         <?php 
                                             the_field("event-date", get_the_ID());
                                             echo("<br>");
@@ -70,7 +70,7 @@ $featured_posts = get_field('field_63fa3b625b1a4');
                             <div class="aspect-square relative overflow-hidden bg-gradient-to-t from-cyan-500 to-blue-500">
                                 
                                 <div class="absolute h-full w-full bg-gradient-to-t from-black to-black-100  -bottom-10 opacity-0 group-hover:bottom-0 group-hover:opacity-100 transition-all duration-300">
-                                    <span class="text-2xl font-serif absolute bottom-0 p-4 text-white">
+                                    <span class="text-sm md:text-xl font-serif absolute bottom-0 p-4 text-white">
                                         Hier steht der Künstler
                                         <br>
                                         <?php echo date("d.m.Y") ?>

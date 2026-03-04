@@ -397,7 +397,7 @@ function showEvents($post_type)
                           echo("<br>");                          
                         ?>
                   		</h2>  
-                      <span class=" text-primary text-xl">
+                      <span class=" text-primary text-base md:text-xl">
                         <p>
                         <?php 
                           $venue = get_field('event-location');
@@ -406,7 +406,7 @@ function showEvents($post_type)
                           <?php endif; ?>								
                         </p>
                         </span>                  
-						<p class=" text-lg font-light leading-snug"> 
+						<p class=" text-base md:text-lg font-light leading-snug"> 
 							<?php 
 								$description = get_field('event-description'); 
 								echo substr($description, 0 , 230)." ...";
@@ -481,14 +481,14 @@ function showEvents($post_type)
 					   <?php 
 						 $venue = get_field('event-location');
 						 if( $venue ): ?>
-							<span class=" text-primary text-xl">
+							<span class=" text-primary text-base md:text-xl">
 								<p>
 									<?php echo esc_html( $venue->post_title ); ?>
 								</p>
 							</span>                  
 						 <?php endif; ?>													   
 					   
-					   <p class=" text-lg font-light leading-snug"> 
+					   <p class=" text-base md:text-lg font-light leading-snug"> 
 						   <?php 							   
 							   the_excerpt(  );							   
 						   ?>
@@ -532,11 +532,11 @@ function showCarousel($post_type)
 
       $loop = new WP_Query($args);
 	  ?>
-	<div id="scrollingDiv" class="h-fit overflow-visible flex flex-nowrap justify-center hover:paused md:animate-infinite-scroll-desktop animate-infinite-scroll-mobile ">
+	<div id="scrollingDiv" class="h-fit overflow-visible flex flex-nowrap hover:paused md:animate-infinite-scroll-desktop animate-infinite-scroll-mobile ">
 	  <?php
       while ($loop->have_posts()):$loop->the_post(); ?>	  
-          <div id="post-<?php the_ID(); ?>" class="flex-shrink-0 md:first:ml[4%] first:ml-[4%] last:mr:mr-[30%] last:mr-[20%] mr-16 md:mr-32 md:snap-center ">                                  
-		  	<a class="flex md:flex-nowrap flex-wrap md:bg-transparent md:transition-opacity hover:opacity-80" href="<?php echo esc_url(
+          <div id="post-<?php the_ID(); ?>" class="flex-shrink-0 md:first:ml-[4%] first:ml-[calc(50vw-8rem)] last:mr:mr-[30%] last:mr-[20%] mr-16 md:mr-32 md:snap-center ">                                  
+		  	<a class="flex flex-col md:flex-row md:bg-transparent md:transition-opacity hover:opacity-80" href="<?php echo esc_url(
                 	get_permalink()
                 ); ?>"> 				
 				<div class="relative lg:min-w-max md:w-80 w-64">
@@ -560,9 +560,9 @@ function showCarousel($post_type)
 						</div>
 					</div>
 				</div>	                  				  
-				<div class="mt-12 md:w-[36rem] p-6 md:pl-16 md:pt-6 text-primary place-items-center flex">
+				<div class="w-64 mt-16 md:mt-0 md:w-[36rem] py-6 md:p-6 md:pl-16 md:pt-6 text-primary place-items-center flex">
 					<div>
-						<h2 class="font-serif bold text-primary entry-title text-base md:text-2xl font-extrabold leading-tight mb-4">
+						<h2 class="font-serif bold text-primary entry-title text-xl md:text-2xl font-extrabold leading-tight mb-4">
 							<?php the_title(); ?>
 						</h2>  
 						<!-- <p>

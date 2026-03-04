@@ -43,14 +43,14 @@ if ($loop->have_posts()) {
     <?php if ($loop->have_posts()) : ?>
     <!-- Filters -->
     <div class="grid grid-cols-2 md:flex md:flex-wrap gap-2 md:gap-4 mb-6 md:mb-8">
-        <select id="filter-year" class="bg-transparent text-white text-xs md:text-sm font-serif px-2 py-1 md:px-4 md:py-2 flex-1 md:flex-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-black">
+        <select id="filter-year" class="bg-transparent text-white text-sm md:text-base font-serif px-2 py-1 md:px-4 md:py-2 flex-1 md:flex-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-black">
             <option value="">Jahre</option>
             <?php foreach ($years as $y) : ?>
                 <option value="<?php echo esc_attr($y); ?>"><?php echo esc_html($y); ?></option>
             <?php endforeach; ?>
         </select>
         <?php if (!empty($locations)) : ?>
-        <select id="filter-location" class="bg-transparent text-white text-xs md:text-sm font-serif px-2 py-1 md:px-4 md:py-2 flex-1 md:flex-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-black">
+        <select id="filter-location" class="bg-transparent text-white text-sm md:text-base font-serif px-2 py-1 md:px-4 md:py-2 flex-1 md:flex-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-black">
             <option value="">Spielstätten</option>
             <?php foreach ($locations as $loc) : ?>
                 <option value="<?php echo esc_attr($loc); ?>"><?php echo esc_html($loc); ?></option>
@@ -97,14 +97,14 @@ if ($loop->have_posts()) {
                        <?php 
                          $venue = get_field('event-location');
                          if( $venue ): ?>
-                            <span class=" text-primary text-xl">
+                            <span class=" text-primary text-base md:text-xl">
                                 <p>
                                     <?php echo esc_html( $venue->post_title ); ?>
                                 </p>
                             </span>                  
                          <?php endif; ?>                                                     
                        
-                       <p class=" text-lg font-light leading-snug"> 
+                       <p class=" text-base md:text-lg font-light leading-snug"> 
                            <?php 						   
                                the_excerpt();						   
                            ?>

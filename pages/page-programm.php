@@ -76,20 +76,20 @@ if ($loop->have_posts()) {
     <?php if ($loop->have_posts()) : ?>
     <!-- Filters -->
     <div class="grid grid-cols-2 md:flex md:flex-wrap gap-2 md:gap-4 mb-6 md:mb-8">
-        <select id="filter-year" class="bg-transparent text-white text-xs md:text-sm font-serif px-2 py-1 md:px-4 md:py-2 flex-1 md:flex-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-black">
+        <select id="filter-year" class="bg-transparent text-white text-sm md:text-base font-serif px-2 py-1 md:px-4 md:py-2 flex-1 md:flex-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-black">
             <option value="">Jahre</option>
             <?php foreach ($years as $y) : ?>
                 <option value="<?php echo esc_attr($y); ?>"><?php echo esc_html($y); ?></option>
             <?php endforeach; ?>
         </select>
-        <select id="filter-month" class="bg-transparent text-white text-xs md:text-sm font-serif px-2 py-1 md:px-4 md:py-2 flex-1 md:flex-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-black">
+        <select id="filter-month" class="bg-transparent text-white text-sm md:text-base font-serif px-2 py-1 md:px-4 md:py-2 flex-1 md:flex-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-black">
             <option value="">Monate</option>
             <?php foreach ($months as $mKey => $mName) : ?>
                 <option value="<?php echo esc_attr($mKey); ?>"><?php echo esc_html($mName); ?></option>
             <?php endforeach; ?>
         </select>
         <?php if (!empty($locations)) : ?>
-        <select id="filter-location" class="bg-transparent text-white text-xs md:text-sm font-serif px-2 py-1 md:px-4 md:py-2 flex-1 md:flex-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-black">
+        <select id="filter-location" class="bg-transparent text-white text-sm md:text-base font-serif px-2 py-1 md:px-4 md:py-2 flex-1 md:flex-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-black">
             <option value="">Spielstätten</option>
             <?php foreach ($locations as $loc) : ?>
                 <option value="<?php echo esc_attr($loc); ?>"><?php echo esc_html($loc); ?></option>
@@ -171,11 +171,11 @@ if ($loop->have_posts()) {
 
                     <!-- Artist + Info -->
                     <div class="flex-1 min-w-0 md:max-h-40 md:overflow-hidden">
-                        <h2 class="font-serif font-extrabold text-primary text-base md:text-2xl leading-tight event-title-clamp">
+                        <h2 class="font-serif font-extrabold text-primary text-xl md:text-2xl leading-tight event-title-clamp">
                             <?php the_title(); ?>
                         </h2>
                         <?php if ($description) : ?>
-                            <p class="hidden lg:block text-sm text-gray-400 font-normal mt-0.5 event-desc-clamp"><?php echo esc_html(wp_trim_words($description, 12, '…')); ?></p>
+                            <p class="hidden lg:block text-base text-gray-400 font-normal mt-0.5 event-desc-clamp"><?php echo esc_html(wp_trim_words($description, 12, '…')); ?></p>
                         <?php endif; ?>
                         <p class="md:hidden text-xs text-gray-400 font-normal mt-1">
                             <?php echo esc_html($formatted_date); ?><?php if ($event_time) echo ' · ' . esc_html($event_time); ?>

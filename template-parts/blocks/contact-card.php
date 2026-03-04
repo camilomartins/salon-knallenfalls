@@ -37,7 +37,7 @@ $image = get_field('image') ?: 'https://freibad-mirke.de';
                     ?>	
                 </div>
                 <div class="group-even:order-first group-odd:mr-10">
-                    <h1 class="font-serif text-2xl">
+                    <h1 class="font-serif text-xl md:text-2xl">
                         <?php echo $name; ?>
                     </h1>
                     <p class="text-base text-light">
@@ -57,7 +57,7 @@ $image = get_field('image') ?: 'https://freibad-mirke.de';
 
         </div>
         <div class=" group-even:order-first group-odd:mr-10">
-            <h1 class="font-serif text-2xl">
+            <h1 class="font-serif text-xl md:text-2xl">
                 <?php echo $name; ?>
             </h1>
             <p class="text-base text-light">
@@ -74,7 +74,7 @@ $image = get_field('image') ?: 'https://freibad-mirke.de';
 
         </div>
         <div class="group-even:order-first group-:mr-10">
-            <h1 class="font-serif text-2xl">
+            <h1 class="font-serif text-xl md:text-2xl">
                 <?php echo $name; ?>
             </h1>
             <p class="text-base text-light">

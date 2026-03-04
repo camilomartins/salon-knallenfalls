@@ -19,7 +19,7 @@
 				 		<h2 class="font-serif bold text-primary entry-title text-xl md:text-2xl font-extrabold leading-snug  mb-4">
                     		<?php the_title(); ?>
                   		</h2>												                  
-						<p class=" text-lg font-light leading-snug"> 
+						<p class=" text-base md:text-lg font-light leading-snug"> 
 							<?php 
 								the_content();
 							?>

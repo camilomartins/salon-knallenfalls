@@ -49,7 +49,7 @@ $image = get_field('image');
     </div>                                    
     <div class="w-1/2  mt-24 ">
         <div class="bg-black  lg:mt-0  min-h-0 ">
-            <h3 class=" font-bold text-4xl font-serif  mb-6">
+            <h3 class=" font-bold text-lg md:text-xl font-serif  mb-6">
                 <?php echo $headline; ?>
             </h3>
             <p class="font-light"><?php echo $text; ?></p>
